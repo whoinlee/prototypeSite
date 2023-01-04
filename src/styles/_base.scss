@@ -1,0 +1,141 @@
+//-------------------------------------------------------//
+// Circle component related
+//-------------------------------------------------------//
+.circleHolder {
+    // border: 1px solid white;
+    padding-left: 4px;
+    padding-right: 4px;
+
+    .circle {
+        // border: 1px solid red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        p.totalNum {
+            font-size: 11px;
+            color: $deepspace-dark-grey;
+        }
+    }
+}
+//-------------------------------------------------------//
+
+
+//-------------------------------------------------------//
+// ControlPanel related
+//-------------------------------------------------------//
+.controlPanel {
+    padding-left: 10px;
+    padding-top: 0px;       //20px (old)
+    width: 300px;
+    height: 90%;
+    color:rgba($atmosphere-white, .75);
+    // border: 1px solid red;
+
+    .animationLabel, .durationLabel, .groupLabel, .checkboxLabel {
+        display: block;
+        margin-top: 15px;
+        padding: 5px;
+        // border: 1px solid red;
+    }
+
+    .groupLabel, .checkboxLabel {
+        display: inline-block;
+    }
+
+    .animTypeLabel {
+        padding-left: 20px;
+        margin-right: 0px;
+    }
+
+    .animTypeInput {
+        margin-left: -4px;
+        margin-right: 2px;
+        width: 14px;
+        height: 14px;
+    }
+
+    .durationInput {
+        font-size: 16px;
+        margin-left: 15px;
+        margin-right: 0px;
+        height: 20px;
+    }
+}
+
+.pageControlPanel {
+    height: 75px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color:rgba($atmosphere-white, .75);
+
+    .column {
+        padding-left: 20px;
+        padding-right: 20px;
+        // border: 1px solid red;
+    }
+
+    .durationInput {
+        height: 19px;
+    }
+
+    .column:last-child {
+        margin-left: 50px;
+    }
+
+    .pageButtonHolder {
+        width: 58px;
+        top: -10px;
+        border: 1px solid rgba($atmosphere-white, .5);
+    }
+}
+//-------------------------------------------------------//
+
+
+//-- spec container -------------------------------------//
+.specContainer {
+    // border: 1px solid yellow;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+    .specPanel {
+        @include particle-font-fixed-width();
+        padding-left: 20px;
+        padding-top: 10px;
+        margin-left: 20px;
+        background-color: rgba(white, .1);
+
+        p {
+            font-size: 11px;
+            color: $white-64;
+        }
+    }
+}
+//-------------------------------------------------------//
+
+
+//-------------------------------------------------------//
+// ScrollBar related
+//-------------------------------------------------------//
+.InspectorPanel,  .RelationshipGraph {
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: $surface-2;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background: $white-38; 
+    }
+
+    ::-webkit-scrollbar-corner {
+        background: $surface-2; 
+    }
+}
+//-------------------------------------------------------//

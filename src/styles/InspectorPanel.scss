@@ -1,0 +1,518 @@
+@import "config";
+@import "inspectorPanel/ipBase";
+
+
+//-------------------------------------------------------//
+// InspectorPanel Global
+//-------------------------------------------------------//
+.InspectorPanel {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100% !important;    //overwrite 100vh
+
+    div.container {
+        width: 1440px;  //need?
+        // border: 1px solid red;
+    }
+
+    section {
+        margin-top: 50px;
+        padding-bottom: 95px;
+        width: 100%;
+       
+        h1 {
+            font-weight: normal;
+            font-size: 30px;
+        }
+    }
+
+    section:last-child {
+        border-bottom: none;
+        padding-bottom: 195px;
+    }
+}
+//-------------------------------------------------------//
+
+
+//-------------------------------------------------------//
+// ExamplePanel Fixed-Sm-Lg, and ContentPane Fixed-Sm-Lg
+//-------------------------------------------------------//
+.InspectorPanel {
+    //---------------------------------------------------//
+    // ExamplePanelFixed, ExamplePanelSm, and ExamplePanelLg
+    //---------------------------------------------------//
+    .examplePanel {
+        width: 100%;
+        height: $ip-example-height;
+        
+        div.panelContainer {
+            position: absolute;
+            left: 50px;
+            width: calc(100% - 100px);
+            min-width: 1134px;   //updated on 07/12, 1084 + 50 (left), **********
+            height: $ip-example-height;
+            display: flex;
+            justify-content: flex-start;
+            border: 1px solid rgba($atmosphere-white, .3);
+            //---- testing
+            // border: 1px solid red;   //-- testing
+
+            .leftNavPane {
+                width: 48px;
+                background-image: url(../assets/inspectorPanel/navigation.svg);
+            }
+
+            .contentPane {
+                width: calc(100% - 48px); //48 = leftNavPane width
+
+                .topBar {
+                    height: 45px;
+                    width: 100%;
+                    min-width: $ip-example-min-width;
+                    background-color: $surface-2;   //$surface-2: #262939 == secondary19
+
+                    .breadcrumb {
+                        position: absolute;
+                        left: 68px;
+                        top: 13px;
+                        width: 800px;
+                        height: 20px;
+                        background-repeat: no-repeat;
+
+                        &.fixed {
+                            background-image: url(../assets/inspectorPanel/breadcrumbPolicy.svg);
+                        }
+
+                        &.sm {
+                            background-image: url(../assets/inspectorPanel/breadcrumbQuotingBind.svg);
+                        }
+
+                        &.lg {
+                            background-image: url(../assets/inspectorPanel/breadcrumbLogs.svg);
+                        }
+                    }
+
+                    .topBarMenu {
+                        position: absolute;
+                        right: 20px;
+                        top: 8px;
+                        width: 286px;
+                        height: 30px;
+                        background-image: url(../assets/bkg/topBarMenu.svg);
+                    }
+                }
+
+                .content {
+                    width: 100%;
+                    height: calc(100% - 47px);  //45 + 2
+                    min-width: $ip-content-min-width;
+                    margin-top: 2px;
+                    display: flex;
+                    // border: 2px solid green;
+                }
+            }
+        }
+    }
+
+    .examplePanel.fixed {
+        min-width: $ip-example-min-width; //230px(relationship pane) + 12px(margin) + 600px(body) + 12px(margin) + 230px(inspector pane)
+    }
+    //-- END ExamplePanel -------------------------------//
+    //---------------------------------------------------//
+
+
+    //---------------------------------------------------//
+    // ContentPaneFixed, ContentPaneSm, and ContentPaneLg
+    //---------------------------------------------------//
+    //-- for contentPaneFixed (230px InspectorPanel) and contentPaneSm (20%/16.5% InspectorPanel)
+    .content.fixed, 
+    .content.sm {
+        min-width: $ip-content-min-width;
+        position: relative;
+        display: flex;
+        border:$ip-outline-width solid $white-75; 
+    
+        &.noBorder {
+            border: none;
+        }
+
+        .contentLeft {
+            position: absolute;
+            display: flex;
+            left: 0px;
+            width: 80%;
+            height: 100%;
+            border-right: none;
+
+            .relationshipPane {
+                width: 230px;
+                height: 100%;
+
+                .background {
+                    position: absolute;
+                    width: 230px;
+                    height: 100%;
+                    background-color: $surface-2;
+                    background-image: url(../assets/inspectorPanel/relationships.svg);
+                    background-repeat: no-repeat;
+                }
+            }
+
+            .mainPane.border {
+                border:$ip-outline-width solid $white-75; 
+            }
+        
+            &.noBorder {
+                border: none;
+            }
+
+            &.fixed {
+                width: calc(100% - 230px);
+                // border: 1px solid yellow;    //-- for testing
+            }
+        }
+
+        .inspectorPaneFixed,
+        .inspectorPaneSm {
+            position: absolute;
+            height: 100%;
+            right: 0px;
+            
+            background-color: $surface-2;
+
+            &.noBorder {
+                border: none;
+            }
+        }
+
+        .inspectorPaneFixed {
+            width: 230px;
+        }
+
+        .inspectorPaneSm {
+            border-left: $ip-outline-width solid $white-75;
+            min-width: $ip-inspector-sm-min-width;
+            max-width: $ip-inspector-sm-max-width;
+
+            @media (min-width: $particle-media-sm-min) {
+                grid-column-start: 9;
+                grid-column-end: 11;
+            }
+        }
+    }
+
+    //-- for contentPaneLg (40%/33% InspectorPanel)
+    .content.lg {
+        position: relative;
+        border:$ip-outline-width solid $white-75; 
+
+        &.noBorder {
+            border: none;
+        }
+
+        .contentLeft {
+            position: absolute;
+            left: 0px;
+            height: 100%;
+            border-right: none;
+            display: flex;
+
+            .mainPane {
+                width: 100%;
+                height: 100%;
+            }
+
+            &.noBorder {
+                border: none;
+            }
+        }
+        
+        .inspectorPaneLg {
+            position: absolute;
+            height: 100%;
+            right: 0px;
+            min-width: $ip-inspector-lg-min-width;
+            max-width: $ip-inspector-lg-max-width;
+            border-left: $ip-outline-width solid $white-75; 
+            background-color: $surface-2;
+
+            &.noBorder {
+                border: none;
+            }
+        }
+    }
+
+    //-- for grid representation
+    .content.showGrids {
+        .particle-rg-fluid-body-sm-10,
+        .particle-rg-fluid-body-sm-12 {
+            // border: 1px solid $pink-70-50;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-column-gap: $particle-rg-gutter;
+        }
+    }
+    //---------------------------------------------------//
+
+
+    //---------------------------------------------------//
+    //-- for mainPane inside of ContentPane
+    //---------------------------------------------------//
+    .mainPane {
+        width: calc(100% - 230px);
+        height: 100%;
+        padding: 20px;
+        padding-left: 12px;
+        padding-right: 14px;
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(black, .25);
+            }
+        }
+
+        .main.Sm {
+            background-image: none;
+            .overlay {
+                left: 230px;
+            }
+        }
+
+        .main.Lg {
+            background-position-x: -7px;
+            background-repeat: no-repeat;
+            background-image: url(../assets/inspectorPanel/mainContent/mainLg.png);  //07/13
+        }
+
+        .main.Fixed {
+            position: absolute;
+            width: calc(100% - 8px);
+            top: 45px;
+            left: 0px;
+
+            .overlay {
+                width: 100%;
+                height: calc(100% - 4px);
+            }
+        }
+    }
+
+    .mainPane.scroll {
+        .contentHolder {
+            overflow-x: scroll;
+        }
+    }
+
+    //-- for mainPane w. fixed width inspector pane
+    .mainPane.Fixed {
+        position: absolute;
+        box-sizing: border-box;
+
+        padding: 0px;
+        padding-top: 20px;
+        left: 242px;    //230px + 12px(margin)
+
+        width: calc(100% - 230px - 24px);
+        height: 975px;
+
+        #bodyHeader {
+            top: 20px;
+            width: calc(100% - 12px);   //margin: 12px
+            min-width: 300px;
+            overflow: hidden;
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+
+            #title {
+                font-size: 18px;
+                font-weight: 500;
+                color: $white-94;
+                // border: 1px solid white;
+            }
+
+            #iconHolder {
+                right: 0;
+                width: 66px;
+                height: 30px;
+                // border: 1px solid white;
+                display: flex;
+                justify-content: space-between;
+
+                span {
+                    width: 30px;
+                    height: 30px;
+                    // border: 1px solid yellow;
+
+                    &.add {
+                        background-position-y: -3px;
+                        background-repeat: no-repeat;
+                        background-image: url(../assets/addPlus.svg);
+                    }
+
+                    &.dots {
+                        background-position-y: 0px;
+                        background-repeat: no-repeat;
+                        background-image: url(../assets/three-dots-v.svg);
+                    }
+                }
+            }
+
+            // border: 1px solid yellow;
+        }
+
+        .contentHolder {
+            // position:
+            overflow-x: hidden;
+            overflow-y: auto;
+            height: 924px;  //955px - 30px(bodyHeader)
+            width: 100%;
+
+            #flowHolder {
+                width: calc(100% - 20px); 
+                min-width: 592px;
+                height: 236px;
+                left: 230px;
+                top: 85px;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-image: url(../assets/inspectorPanel/mainContent/flowMapFixed.svg);
+                // border: 1px solid yellow;
+            }
+
+            #chartHolder {
+                width: 100%; 
+                // min-width: 592px;
+                min-width: 750px;   //-- fake, if chart/data-grid/any-component can't be resized any more
+                height: 636px;
+                margin-top: 75px;
+                background-position: top left;
+                background-repeat: no-repeat;
+                background-image: url(../assets/inspectorPanel/mainContent/chartsLg.svg);
+                // border: 2px solid purple;
+            }
+        }
+    }
+
+    //-- for mainPane w. small inspector pane
+    .mainPane.Sm {
+        width: calc(100% - 230px);
+
+        .contentHolder {
+            position: absolute;
+            top: 20px;
+
+            height: 950px;
+            width: 100%;
+            width: calc(100% - 230px - 26px);
+           
+            background-position-x: -12px;
+            background-repeat: no-repeat;
+            background-image: url(../assets/inspectorPanel/mainContent/mainSm.svg); //07/13
+        }
+    }
+
+    //-- for mainPane w. large inspector pane
+    .mainPane.Lg {
+        .contentHolder {
+            position: absolute;
+            top: 20px;
+            height: 950px;
+            width: 100%;
+        }
+    }
+    //---------------------------------------------------//
+
+
+    //---------------------------------------------------//
+    //-- pane width indicator for contentLeft and inspectorPane
+    //---------------------------------------------------//
+    .paneWidthIndicator {
+        position: absolute;
+        left: 2px;
+        top: 2px;
+        background-color: rgb(195, 195, 195, .85);
+        width: 50px;
+        height: 17px;
+        color: black;
+        text-align: center;
+        font-size: 14px;
+        z-index: 10;
+    }
+    //-- END ContentPane --------------------------------//
+    //---------------------------------------------------//
+}
+//-------------------------------------------------------//
+
+
+//-------------------------------------------------------//
+// Control Panel and Spec
+//-------------------------------------------------------//
+.InspectorPanel {
+    .controlPanel {   
+        // border: 1px solid white;    //test 
+        width: 100%;
+        height: 50px;
+        padding-top: 25px;
+        
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        color: $white-75;
+
+        .column {
+            // border: 1px solid red;   //test
+            margin-right: 60px;
+            
+            .optionLabel {
+                margin-left: -5px;
+            }
+        
+            .ratioLabel {
+                padding-left: 10px;
+                margin-right: 10px;
+            }
+        
+            .radioOption {
+                margin-right: 2px;
+                width: 14px;
+                height: 14px;
+            }
+        
+            .checkboxOption {
+                margin-left: 15px;
+                width: 14px;
+                height: 14px;
+            }
+        }
+    }
+
+    //-- .specPanel, should be inside of .InspectorPanel, for not being confused with .specPanel styles for other projects
+    .specPanel {
+        @include particle-font-fixed-width();
+        margin-left: 5px;
+        margin-bottom: 35px;
+
+        p {
+            font-size: 14px;
+            color: $white-64;
+        }
+    }
+}
+//-------------------------------------------------------//
+
+
+@import "inspectorPanel/ipMedia";

@@ -1,0 +1,85 @@
+.tabs-container {
+  position: relative;
+  width: 100%;
+
+  &.vertical {
+    .tabs {
+      flex-direction: column;
+      padding: 0 7.5px;
+
+      .tab-item {
+        padding: 0 10px;
+        display: flex;
+        align-items: center;
+        height: 30px;
+        /* &.active {
+          border-left: 3px solid var(--form-control-border-hover-color);
+        } */
+      }
+    }
+  }
+
+  .tabs {
+    padding: 10px 0;
+    display: flex;
+    text-align: center;
+
+    .tab-item {
+      text-transform: capitalize;
+      cursor: pointer;
+      font-weight: 400;
+
+      &.active,
+      &:hover {
+        color: var(--link-color);
+      }
+
+      &.active {
+        font-weight: 500;
+      }
+    }
+  }
+
+  .line {
+    position: absolute;
+    bottom: 0;
+    transition: left 0.25s ease-in-out, width 0.5s 0.1s;
+    height: 3px;
+    background-color: var(--form-control-border-hover-color);
+    pointer-events: none;
+  }
+
+  .line-background {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 3px;
+    background: var(--secondary);
+  }
+
+  .line-vertical {
+    position: absolute;
+    top: 0;
+    transition: top 0.25s ease-in-out, height 0.5s 0.1s;
+    padding: 3px 0;
+    height: 30px;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+
+    .line-inside {
+      border-radius: 3px;
+      width: 3px;
+      height: 22px;
+      background-color: var(--form-control-border-hover-color);
+    }
+  }
+
+  .line-background-vertical {
+    position: absolute;
+    top: 0;
+    width: 3px;
+    background: var(--secondary);
+  }
+}

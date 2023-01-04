@@ -1,0 +1,48 @@
+//-------------------------------------------------------//
+// variables
+//-------------------------------------------------------//
+$rg-grid-color: $pink-60-35;
+$rg-component-section-padding-left: 40px;
+$rg-component-section-header-height: 21px;
+$rg-component-header-height: 47px;
+$rg-component-holder-height: 140px;
+$rg-component-min-width: 230px;
+$rg-icon-width: 18px;
+$rg-icon-height: 18px;
+$rg-section-offset: 100px;
+
+
+//-------------------------------------------------------//
+// Transition related
+//-------------------------------------------------------//
+.RelationshipGraph {
+    //-- $particle-duration-standard: 300ms;
+    //-- $particle-easing-standard: cubic-bezier(0.4,0,0.2,1);
+    transition: all $particle-duration-standard $particle-easing-standard;
+}
+//-------------------------------------------------------//
+
+
+//-------------------------------------------------------//
+// ScrollBar related
+//-------------------------------------------------------//
+.RelationshipGraph {
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: $surface-2;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background: $white-38; 
+    }
+
+    ::-webkit-scrollbar-corner {
+        background: $surface-2; 
+    }
+}
+//-------------------------------------------------------//

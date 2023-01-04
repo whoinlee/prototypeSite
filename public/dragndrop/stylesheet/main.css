@@ -1,0 +1,130 @@
+:root {
+  --white: rgba(255, 255, 255, 0.64);
+  --grid-gray :#323443;;
+  --hover-purple: #494174;
+  --active-purple: #5747A4;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #262939;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+#myGrid {
+  overflow: hidden;
+}
+
+.ag-root-wrapper {
+  border-radius: 6px;
+  border-width: 0 !important;   /* added by WhoIN */
+}
+
+/* Drag handler */
+.ag-drag-handle, .ag-row-drag {
+  padding: 0 5.5px;
+  margin-right: 0 !important;
+}
+
+/* Fix header cell bg color when drag */
+.ag-header-cell {
+  background-color:  var(--grid-gray)!important;
+}
+
+.ag-cell { 
+  padding: 12px 0px!important; 
+} 
+
+/* Header spacing and border lines workaround */
+.ag-header-row .ag-header-cell:first-child{
+  margin-left: 30px!important;
+  border-left: 1px solid rgba(255, 255, 255, 0.15)!important;
+}
+.ag-header-row .ag-header-cell:nth-child(2){
+  border-left: 1px solid rgba(255, 255, 255, 0.15)!important;
+}
+
+.ag-cell-value, .ag-header-cell {
+  padding: 0 13px!important;
+}
+
+/* Remove default border from header */
+.ag-layout-normal{
+  border-width: 0 !important;
+  background-color:  var(--grid-gray)!important;
+}
+
+.rowStyling, .ag-header-row {
+  box-shadow: inset 0 -1px 0px 0px rgba(255, 255, 255, 0.15)!important;
+  color: var(--white)!important;
+  background-color:  var(--grid-gray)!important;
+}
+
+.ag-row {
+  border-width: 0 !important;
+}
+
+/* ghost drag window */
+.ag-dnd-ghost{
+  background-color:  #4f5361!important; 
+  color: var(--white)!important;
+  border: none !important;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3) !important;
+  border-radius: 3px !important; 
+  height: 40px !important;
+}
+
+/* Icon from ghost window */
+.ag-icon {
+  color:var(--white)!important;
+}
+
+/* background, cell bg, header bg */
+.ag-center-cols-viewport, .ag-cell, .ag-header-cell  {
+  border-width: 0 !important;
+  font-family: “Roboto”, sans-serif;
+  font-size: 13px;
+  box-shadow: inset 0 -1px 0px 0px rgba(255, 255, 255, 0.15)!important; /*changed to bottom boxshadow only, boxshadow will not take on rowclass*/
+}
+
+.ag-header-cell {
+  border-right: 1px solid rgba(255, 255, 255, 0.15)!important;
+}
+
+.ag-row-selected {
+  background-color: var(--active-purple)!important;
+}
+
+/* HOVER */
+.ag-row-hover {
+  background-color: var(--hover-purple)!important;
+}
+
+.ag-header-cell:hover {
+  background-color:  var(--hover-purple) !important;
+}
+
+.ag-header-cell-moving {
+  background-color: var(--hover-purple) !important;
+}
+
+/* Keyboard */
+.ag-header-active:focus {
+  background-color: var(--active-purple)!important;
+}
+
+.ag-row-focus{
+  background-color: var(--active-purple)!important;
+} 
+
+/* Keyboard nav instruction div */
+#guide {
+  margin-top: 50px;
+  /* color: white; */
+  /* updated by WhoIN */
+  color: rgba(255, 255, 255, 0.85);  
+  font-size: 15px;
+}

@@ -1,0 +1,277 @@
+@import "config";
+@import "themeVars";
+@mixin spread-map($map: ()) {
+  @each $key, $value in $map {
+      #{$key}: $value;
+  }
+}
+
+ //-- set dark color variables
+.date-picker.dark, [data-theme="dark"] {
+  @include spread-map($theme-map-dark);
+}
+
+//-- set light color variables
+.date-picker.light, [data-theme="light"] { 
+  @include spread-map($theme-map-light);
+}
+
+//-- common color variables 
+$date-picker-input-disabled-bkg-color: $white-06;
+$date-picker-input-readonly-bkg-color: transparent;
+$date-picker-input-error-icon-color: $critical-74;
+$date-picker-calendar-box-shadow: 0px 5px 15px $black-30;
+
+//-- other variables
+$date-picker-z-index: 1;
+$date-picker-default-font-size: 13px;
+$date-picker-error-font-size: 10px;   //-- 11px to 10px, to accomodate longer error msg
+$date-picker-icon-width: 18px;
+$date-picker-icon-height: 18px;
+$date-picker-width: 192px;
+$date-picker-min-height: 224px;
+$date-picker-input-height: 30px;
+$date-picker-calendar-min-height: 194px;
+$date-picker-calendar-radius: 6px;
+$date-picker-calendar-padding: $particle-spacing-3x;
+$date-picker-calendar-title-line-height: $date-picker-icon-height;  //-- title: "August 2022"
+$date-picker-calendar-disabled-opacity: 0.35;
+$date-picker-day-width: 22px;
+$date-picker-day-height: 22px;
+$date-picker-day-radius: 3px;
+$date-picker-day-padding-top: $particle-spacing-1x;
+$date-picker-day-padding-bottom: $particle-spacing-1x;
+
+//-- icon paths
+$icon_base: "./assets/";
+$calendar-icon-path: "#{$icon_base}calendar.svg";
+$error-icon-path: "#{$icon_base}error.svg";
+$chevron-left-icon-path: "#{$icon_base}chevronLeft.svg";
+$chevron-right-icon-path: "#{$icon_base}chevronRight.svg";
+
+.date-picker {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-size: $date-picker-default-font-size;
+  line-height: calc($date-picker-default-font-size + 2px);
+  width: $date-picker-width;
+  min-height: $date-picker-min-height;
+  z-index: $date-picker-z-index;
+
+  &__label {
+    margin-bottom: $particle-spacing-1x;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: var($date-picker-label-color);
+    cursor: default;
+  }
+
+  &__inputSection {
+    .inputField {
+      width: $date-picker-width;
+      height: $date-picker-input-height;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: var($date-picker-input-bkg-color);
+      border-bottom: 1px solid var($date-picker-input-border-bottom-color);
+
+      input[type=text] {
+        margin-left: calc($particle-spacing-1x + 2px);
+        width: 146px;
+        height: 15px;
+        background-color: transparent;
+        box-sizing: border-box;
+        border: none;
+        color: var($date-picker-input-text-color);
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .calendarIcon {
+        margin-right: $particle-spacing-2x;
+        width: $date-picker-icon-width;
+        height: $date-picker-icon-height;
+        background-color: var($date-picker-input-text-color);
+        mask-image: url($calendar-icon-path);
+      }
+    }
+
+    .inputField:hover {
+      background-color: var($date-picker-input-bkg-hover-color);
+      border-bottom: 1px solid var($date-picker-hover-color);
+
+      input[type=text] {
+        color: var($date-picker-input-text-color);
+      }
+    }
+
+    .inputField.onFocus {
+      border-bottom: 2px solid var($date-picker-selected-color);
+      background-color: var($date-picker-input-typing-bkg-color);
+
+      input[type=text] {
+        color: var($date-picker-input-typing-color);
+      }
+    }
+
+    .inputField.disabled {
+      border-bottom: 1px dotted var($date-picker-input-disabled-color);
+      // cursor: default;
+      cursor: not-allowed;
+      caret-color: transparent;
+      
+      &:hover {
+        cursor: default;
+        background-color: $date-picker-input-disabled-bkg-color;  //*** no change
+      }
+
+      input[type=text] {
+        cursor: default;
+        cursor: not-allowed;
+        color: var($date-picker-input-disabled-color);
+
+        &:focus {
+          cursor: default;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    .inputField.error {
+      background-color: var($date-picker-input-error-bkg-color);
+      border-bottom: 1px solid var($date-picker-input-error-color);
+ 
+      input[type=text] {
+        color: var($date-picker-input-text-color);
+      }
+    }
+
+    .inputField.readOnly {
+      background-color: $date-picker-input-readonly-bkg-color;  //*no change
+      border-bottom: 1px solid var($date-picker-day-readonly-border-color);
+
+      input[type=text] {
+        color: var($date-picker-day-readonly-text-color);
+      }
+    }
+
+    .errorField {
+      margin-top: $particle-spacing-1x;
+      margin-bottom: 2px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: default;
+      font-size: var($date-picker-error-font-size);
+
+      .errorIcon {
+        width: $date-picker-icon-width;
+        height: $date-picker-icon-height;
+        background-color: $date-picker-input-error-icon-color;  //*no change
+        mask-image: url($error-icon-path);
+      }
+
+      .errorMsg{
+        font-size: $date-picker-error-font-size;
+        line-height: calc($date-picker-error-font-size + 2px);
+        color: var($date-picker-input-error-color);
+      }
+    }
+  }
+
+  &__calendarSection {
+    width: $date-picker-width;
+    min-height: $date-picker-calendar-min-height;
+    height: 100%;
+    background-color: var($date-picker-calendar-bkg-color);
+    box-shadow: $date-picker-calendar-box-shadow; //*no change
+    padding: $date-picker-calendar-padding;
+    border-radius: $date-picker-calendar-radius;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: normal;
+    color: var($date-picker-calendar-title-color);
+    margin-bottom: $particle-spacing-2x;
+  }
+
+  &__prev,
+  &__next {
+    width: $date-picker-icon-width;
+    height: $date-picker-icon-height;
+    background-color: var($date-picker-calendar-header-icon-color);
+    cursor: pointer;
+
+    &:hover {
+      background-color: var($date-picker-calendar-title-color);
+    }
+  }
+
+  &__prev {
+    mask-image: url($chevron-left-icon-path);
+  }
+
+  &__next {
+    mask-image: url($chevron-right-icon-path);
+  }
+
+  &__title {
+    line-height: $date-picker-calendar-title-line-height;
+    height: $date-picker-icon-height;
+    cursor: default;
+  }
+
+  &__week {
+    text-align: center;
+    font-weight: 500;
+    font-size: $date-picker-default-font-size;
+    width: 24px;
+    height: 24px;
+    color: var($date-picker-week-text-color);
+    cursor: default;
+  }
+
+  &__day {
+    width: $date-picker-day-width;
+    height: $date-picker-day-height;
+    min-width: $date-picker-day-width;
+    min-height: $date-picker-day-height;
+    text-align: center;
+    background-color: transparent;
+    cursor: default;
+
+    &__label {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: $date-picker-day-width;
+      height: $date-picker-day-height;
+      color: var($date-picker-day-text-color);
+      background-color: transparent;
+      cursor: pointer;
+      border-radius: $date-picker-day-radius;
+
+      &:focus,
+      &:hover,
+      &:active {
+        outline: 1px solid var($date-picker-day-border-color);
+      }
+    }
+
+    &.selected {
+      .date-picker__day__label {
+        outline: 1px solid var($date-picker-day-border-color);
+      }
+    }
+
+    &.disabled {
+      color: var($date-picker-day-disabled-text-color);
+    }
+  }
+}

@@ -1,0 +1,78 @@
+@media only screen and (min-width: 1600px) {
+    .InspectorPanel {
+        div.container {
+            margin-left: 115px;
+            margin-right: auto;
+        }
+
+        .examplePanel {
+            div.panelContainer {
+                width: calc(100% - 130px);  //65x2 = 130px
+                left: 65px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1599px) {
+    .InspectorPanel {
+        div.container {
+            margin-left: 115px; //100px
+            margin-right: auto;
+        }
+
+        .examplePanel {
+            div.panelContainer {
+                width: calc(100% - 130px);  //100px
+                left: 65px; //50px
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .InspectorPanel {
+        div.container {
+            margin-left: 115px;
+            margin-right: auto;
+        }
+
+        .examplePanel {
+            div.panelContainer {
+                width: calc(100% - 130px);
+                left: 65px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (min-width: $particle-media-xs-min) {
+    .InspectorPanel {
+        .content.showGrids {
+            .particle-rg-fluid-body-sm-10 {
+                grid-template-columns: repeat($particle-rg-columns-10, 1fr);
+                @for $i from 1 through $particle-rg-columns-10 {
+                    .sm:nth-child(#{$i}) {
+                        background: $ip-grid-color;
+                        opacity: 0.50;
+                        grid-column-start: $i;
+                        grid-column-end: $i + 1;
+                    }
+                }
+            }
+
+            .particle-rg-fluid-body-sm-12 {
+                grid-template-columns: repeat($particle-rg-columns-default, 1fr);
+                @for $i from 1 through $particle-rg-columns-default {
+                    .sm:nth-child(#{$i}) {
+                        background: $ip-grid-color;
+                        opacity: 0.50;
+                        grid-column-start: $i;
+                        grid-column-end: $i + 1;
+                    }
+                }
+            }
+        }
+    }
+}

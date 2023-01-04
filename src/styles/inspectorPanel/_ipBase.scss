@@ -1,0 +1,244 @@
+//-------------------------------------------------------//
+// variables
+//-------------------------------------------------------//
+$ip-outline-width: 2px;
+$ip-grid-color: $pink-60-35;
+
+$ip-relationship-width: 230px;
+$ip-body-min-width: $particle-body-width-min;   //600px
+$ip-inspector-fixed-width: 230px;
+$ip-example-min-width: calc($ip-relationship-width + $particle-spacing-3x + $ip-body-min-width + $particle-spacing-3x + $ip-inspector-fixed-width); //1084px
+$ip-example-height: 1024px;
+$ip-content-min-width: $ip-example-min-width;   //1084px
+$ip-inspector-sm-min-width: 230px;
+$ip-inspector-sm-max-width: $ip-inspector-sm-min-width * 2; //460px
+$ip-inspector-lg-min-width: $ip-inspector-sm-min-width * 2; //460px
+$ip-inspector-lg-max-width: $ip-inspector-lg-min-width * 2; //920px
+
+
+//-------------------------------------------------------//
+// Actions, Properties, and Logs
+//-------------------------------------------------------//
+.InspectorPanel {
+    div.actions, div.properties, div.logs {
+        margin-top: 2px;
+        margin-left: 20px;
+        padding-bottom: 6px;
+        // border: 1px solid pink;
+
+        div { margin-bottom: 12px; }
+
+        .headline {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0px;
+            // border: 1px solid red;
+            overflow-x: visible;
+
+            .expanderDown {
+                margin-top: 7px;
+                margin-right: 8px;
+            }
+        }
+
+        .title {
+            font-weight: 500;
+            font-size: 11px;
+            color: $white-64;
+            text-transform: capitalize;
+        }
+    }
+
+    .button {
+        width: 190px;
+        height: 30px;
+        border-radius: 3px;
+        text-align: 'center';
+        background-color: #3c3e4d;
+        color: $white-94;
+        cursor: pointer;
+        font-size: 14px;
+        line-height: 16px;
+        padding-top: 7px;
+
+        &:hover {
+            background-color: $white-25;
+        }
+    }
+
+    .expanderDown {
+        width: 18px;
+        height: 18px;
+        background-size: 18px 18px;
+        // background-image: url(../../assets/base/expanderDown.svg);
+        background-image: url(../../assets/base/chevron-down.svg);
+        background-repeat: none;
+        opacity: .64;
+        // border: 1px solid red;
+    }
+
+    .plusIcon {
+        left: 100px;
+        width: 30px;
+        height: 30px;
+        background-image: url(../../assets/base/plusIcon.svg);
+    }
+
+    div.actions {
+        border-bottom: 1px solid $white-15;
+    }
+
+    div.properties {
+        .contentHolder {
+            display: flex;
+            width: calc(100% - 20px);
+            // border: 1px solid red;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 0px;
+
+            .propertyValue {
+                display: block;
+                width: 190px;
+                margin-top: 0px;
+                margin-bottom: 16px;
+
+                .property {
+                    color: $white-94;
+                    font-size: 13px;
+                    line-height: 15px;
+                    padding: 0 0;
+                    margin: 0 0;
+                }
+            
+                .value {
+                    color: $white-64;
+                    font-size: 13px;
+                    line-height: 15px;
+                    padding: 0 0;
+                    margin: 0 0;
+                }
+            }
+        
+            .propertyValue:last-child {
+                margin-bottom: 0px;
+            }
+        }
+    }
+
+    div.logs {
+        .searchSection {
+            display: flex;
+            justify-content: flex-start;
+            // justify-content: space-between;
+
+            .search {
+                min-width: 374px;
+                height: 30px;
+                font-size: 13px;
+                color: $white-75;
+                padding-left: 12px;
+                border-radius: 3px;
+                background-color: $white-06;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .searchIcon {
+                    background-image: url(../../assets/base/searchIcon.svg);
+                    background-repeat: no-repeat;
+                    width: 18px;
+                    height: 18px;
+                    margin-top: 12px;
+                    margin-right: 4px;
+                }
+            }
+
+            .plusIcon {
+                margin-right: 16px;
+                // border: 1px solid red;
+            }
+        }
+        
+        .contentHolder {
+            width: calc(100% - 10px);
+            height: 775px;
+            overflow: hidden;
+
+            .logDataGrid {
+                font-size: 13px;
+                color: $white-64;
+                
+                .headerRow {
+                    width: calc(100% - 14px);
+                    display: flex;
+                    justify-content: flex-start;
+                    .header {
+                        padding-left: 14px;
+                        line-height: 39px;
+                        height: 39px;
+                        border-right: 1px solid $white-15;
+                    }
+                    border-bottom: 1px solid $white-15;
+                }
+
+                .logDataGridRow {
+                    width: calc(100% - 14px);
+                    display: flex;
+                    justify-content: flex-start;
+                    height: 60px;
+                    border-bottom: 1px solid $white-15;
+                    .col1 {
+                        padding-left: 12px;
+                    }
+                    .col2 {
+                        padding-left: 14px;
+                        span {
+                            color: #9e7eff;
+                        }
+                        overflow-x: hidden;
+                        overflow-y: hidden;
+                    }
+                }
+            }
+        }
+    }
+}
+//-------------------------------------------------------//
+
+
+//-------------------------------------------------------//
+// Transition related
+//-------------------------------------------------------//
+.InspectorPanel {
+    //-- $particle-duration-standard: 300ms;
+    //-- $particle-easing-standard: cubic-bezier(0.4,0,0.2,1);
+    transition: all $particle-duration-standard $particle-easing-standard;
+}
+//-------------------------------------------------------//
+
+
+//-------------------------------------------------------//
+// ScrollBar related
+//-------------------------------------------------------//
+.InspectorPanel {
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: $surface-5; //-- darker than surface-2
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background: $white-38; 
+    }
+
+    ::-webkit-scrollbar-corner {
+        background: $surface-2; 
+    }
+}
+//-------------------------------------------------------//
+

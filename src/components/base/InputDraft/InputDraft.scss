@@ -1,0 +1,32 @@
+.input-draft {
+  input {
+    /* border-style: none;
+    background-color: var(--form-control-background);
+    border-bottom: 1px solid var(--form-control-border-color);
+    width: 100%;
+    color: var(--font-color);
+    padding: 5px 10px;
+ */
+    border-style: none;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px 7.5px 2px;
+    background-color: var(--form-control-background);
+    border-bottom: 1px solid var(--form-control-border-color);
+    width: 100%;
+    color: var(--font-color);
+
+    &:hover,
+    &:focus {
+      background-color: var(--form-control-background-hover);
+      border-bottom: 1px solid var(--form-control-border-hover-color);
+    }
+
+    &:disabled {
+      background-color: transparent;
+      border-bottom: 1px solid var(--form-control-border-color-disabled);
+    }
+  }
+}

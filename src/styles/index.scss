@@ -1,0 +1,659 @@
+@import "config";
+
+
+//-------------------------------------------------------------------//
+$topbar-height: 70px;
+$logo-margin: 14px;
+$top-margin: 16px;
+$left-margin: 24px;
+//-------------------------------------------------------------------//
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  @include particle-font-regular();
+  background-color: $surface-5;
+  color: $atmosphere-white;
+  padding: 0;
+  margin: 0;  //-- resolves iFrame top left extra margin issue
+}
+
+//-- BaseApp related ------------------------------------------------//
+.BaseApp {
+  background-color: $atmosphere-white;
+  color: $deepspace-dark-grey;
+  height: 100vh;
+  pointer-events: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  //-- page title
+  p.headline {
+    margin-top: 95px;
+    margin-bottom: 25px;
+    font-size: 48px;
+    font-weight: normal;
+    opacity: 50%;
+  }
+
+  //-- backHome link
+  p.backHome {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    
+    a {
+      color: $primary-high;
+    }
+  }
+}
+
+.BaseApp.dark {
+  background-color: $surface-5;
+  color: $atmosphere-white;
+}
+
+p.centered {
+  text-align: center;
+}
+//-------------------------------------------------------------------//
+
+
+//-- TopBar related -------------------------------------------------//
+.TopBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: $topbar-height;
+  box-shadow: 0px 6px 8px -6px rgba(#000, .7); //h, v, blur, spread
+
+  //-- dark theme, default
+  background-color: $deepspace-dark-grey;
+  color: $atmosphere-white;
+
+  a {
+    text-decoration: none;
+  }
+
+  #logo {
+    position: absolute;
+    top: $top-margin;
+    left: $logo-margin;
+    width: 40px;
+    height: 40px;
+    background-color: $highlight-high;
+    cursor: pointer;
+    mask-image: url(#{$image_base}inline-images/agentTypes/appd.svg);
+    mask-position: center;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+
+    &:hover {
+      background-color: $secondary-high;
+      // background-color: $deepspace-light-grey;
+    }
+  }
+
+  #home {
+    position: absolute;
+    top: 26px;
+    left: 67px;
+    font-weight: 500;
+
+    a {
+      color: $atmosphere-white;
+      letter-spacing: 0.075rem;
+
+      span {
+        font-size: 10px;
+        font-weight: 400;
+      }
+
+      &:hover {
+        color: $secondary-high;
+        // color: $deepspace-light-grey;
+      }
+    }
+  }
+
+  #barButton {
+    position: absolute;
+    top: $top-margin;;
+    right: $logo-margin;
+    height: 40px;
+    width: 40px;
+    visibility: hidden;
+    z-index: 100;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      .bar, .bar::after, .bar::before {
+        background-color: $secondary-high;
+        // background-color: $deepspace-light-grey;
+      }
+    }
+
+    //-- top bar
+    .bar::before {
+      bottom: 8px;
+    }
+    //-- bottom bar
+    .bar::after {
+      top: 8px;
+    }
+    //-- middle bar
+    .bar {
+      top: 0;
+      height: 2px;
+      width: 28px;
+      position: relative;
+      background-color: $highlight-high;
+      z-index: -1;
+    }
+
+    .bar::after,
+    .bar::before {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      background-color: $highlight-high;
+      transition: all 0.3s ease-out;
+    }
+  }
+
+  #barButton.active {
+    .bar {
+      visibility: hidden;
+    }
+
+    //-- moves to the center ===> rotate
+    .bar::before {
+      bottom: 0;
+      transform: rotate(45deg);
+      visibility: visible;  //03/23/22
+    }
+    .bar::after {
+      top: 0;
+      transform: rotate(-45deg);
+      visibility: visible;
+    }
+  }
+
+  .menuHolder {
+    position: absolute;
+    top: 0px;
+    right: 30px;
+    width: calc(100vw - 230px);
+    height: 100%;
+    z-index: 50;
+
+    ul {
+      position: relative;
+      top: -16px;
+      list-style: none;
+      width: 100%;
+      height: inherit;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      transition: left 0.3s ease;
+
+      li {
+        a {
+          font-size: 16px;
+          font-weight: normal;
+          letter-spacing: 0.2rem;
+          color: $highlight-high;
+          padding: 20px;
+          display: block;
+
+          &:hover {
+            color: $secondary-high;
+          }
+        }
+
+        a.active {
+          font-weight: 700;
+          cursor: default;
+          &:hover {
+            color: $highlight-high;
+          }
+        }
+      }
+    }
+
+    ul.active {
+      left: -55px;
+    }
+  }
+}
+
+//-- light theme
+.TopBar.light {
+  background-color: $atmosphere-white;
+  color: $deepspace-dark-grey;
+
+  #logo {
+    background-color: $deepspace-dark-grey;
+    &:hover {
+      // background-color: $deepspace-light-grey;
+      background-color: $primary-high;
+    }
+  }
+
+  #home a {
+    color: $deepspace-dark-grey;
+    &:hover {
+      // color: $deepspace-light-grey;
+      color: $primary-high;
+    }
+  }
+
+  #barButton {
+    .bar, .bar::before, .bar::after {
+      background-color: $deepspace-dark-grey;
+    }
+    &:hover {
+      .bar, .bar::after, .bar::before {
+        background-color: $primary-high;
+        // background-color: $deepspace-light-grey;
+      }
+    }
+  }
+
+  .menuHolder ul li a {
+    color: $deepspace-dark-grey;
+    &:hover {
+      color: $primary-high;
+    }
+  }
+
+  .menuHolder ul li a.active {
+    &:hover {
+      color: $deepspace-dark-grey;
+    }
+  }
+}
+
+.TopBar.show {
+  top: 0px;
+  transition: top .3s ease-out;
+}
+
+.TopBar.hide {
+  top: -85px;
+  transition: top .5s ease-out;
+}
+//-------------------------------------------------------------------//
+
+
+//-- NavPane related ------------------------------------------------//
+//-- MenuItem -----------------------------------------------//
+.MenuItem {
+  width: 100%;
+  height: 38px;
+  font-size: 15px;
+  color: rgba($highlight-high, .85);
+  cursor: pointer;
+
+  //-- NavLink <a> tag (actual MenuItem)
+  a {
+    // border: 1px solid white; //for testing
+    display: inline-block;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+    padding-top: 10px;
+    text-decoration: none;
+    padding-left: 20px;
+
+    #arrow {
+      pointer-events: none;
+      position: absolute;
+      left: 0px;
+      width: 24px;
+      height: 18px;
+      background-color: $highlight-high;
+      mask-image: url(#{$asset_base}arrow-drop-down.svg);
+      mask-position: center;
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      transform: rotate(-90deg);
+      transition: transform .2s;
+    }
+
+    #arrow.down {
+      transform: rotate(0deg);
+    }
+
+    &:hover {
+      background-color: rgba($primary-high, .4);
+      color: $highlight-high;
+    }
+  }
+
+  //-- active NavLink w/o subMenu
+  a.active {
+    color: $highlight-high;
+    background-color: $primary-high;
+    cursor: default;
+
+    #arrow {
+      visibility: hidden;
+    }
+  }
+
+  //-- active NavLink w. subMenu
+  a.activeWithSub {
+    color: $highlight-high;
+    background-color: $primary-high;
+    cursor: pointer;
+
+    #arrow {
+      visibility: visible;
+    }
+
+    &:hover {
+      color: $highlight-high;
+      background-color: $primary-high;
+    }
+  }
+}
+
+/* sub MenuItem (Link) */
+.MenuItem.sub {
+  a {
+    padding-left: 40px;
+  }
+}
+//-----------------------------------------------------------//
+
+.NavPane {
+  position: fixed;
+  top: 0;
+  left: 0px; //-(285-56)
+  width: 275px;
+  height: 100%;
+  overflow-x: hidden; 
+  overflow-y: auto;
+  background-color: $surface-3;
+  color: $atmosphere-white;
+  border-right: 1px solid rgba($deepspace-light-grey, .25);
+  transition: left .5s ease-out;
+
+  #toggleButton {
+    //-- https://www.designcise.com/web/tutorial/how-to-fix-issues-with-css-position-sticky-not-working
+    // position: -webkit-sticky;  //not working, because its parent overflow-y
+    // position: sticky;
+    // bottom: 14px;
+    // left: 235px;
+    position: absolute;
+    right: 10px;
+    bottom: 14px;
+    width: 28px;
+    height: 28px;
+    background-color: $highlight-high;
+    mask-image: url(#{$asset_base}double-chevron-right.svg);
+    mask-position: center;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    cursor: pointer;
+    z-index: 50;
+    transform: rotate(180deg);
+
+    &:hover {
+      background-color: $deepspace-light-grey;
+      // background-color: $primary-high;
+    }
+  }
+
+  #toggleButton.flip {
+    transform: rotate(0deg);
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .header {
+    width: inherit;
+    height: 69px; //70px
+
+    #logo {
+      position: absolute;
+      top: $top-margin;
+      left: $logo-margin;
+      width: 40px;
+      height: 40px;
+      background-color: $highlight-high;
+      mask-image: url(#{$image_base}inline-images/agentTypes/appd.svg);
+      mask-position: center;
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $deepspace-light-grey;
+        // background-color: $primary-high;
+      }
+    }
+
+    #home {
+      position: absolute;
+      top: 26px;
+      left: 67px;
+      font-weight: 500;
+      
+      letter-spacing: 0.075rem;
+      cursor: pointer;
+
+      span {
+        font-size: 10px;
+        font-weight: 400;
+      }
+
+      a {
+        color: $atmosphere-white;
+        &:hover {
+          color: $deepspace-light-grey;
+          // color: $primary-high;
+        }
+      }
+    }
+  }
+
+  .categoryHolder {
+    padding-top: 15px;
+    padding-bottom: 25px;
+    border-top: 1px solid rgba($highlight-high, .25);
+    // border: 1px solid red;
+
+    #title {
+      padding-left: 20px;
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 10px;
+      color: rgba($atmosphere-white, 1);
+      cursor: default;
+    }
+
+    .menuHolder {
+      padding-bottom: 10px;
+
+      .submenu {
+        width: 100%;
+        display: none;
+      }
+    
+      .submenu.show {
+        display: inline-block;
+        visibility: visible;
+      }
+    }
+  }
+
+  transition: all .3s ease-out; //CHECK!!!
+}
+
+.NavPane.open {
+  left: 0px;
+
+  .categoryHolder {
+    border-top: 1px solid rgba($highlight-high, .25);
+  }
+
+  transition: left .25s ease-out;
+}
+
+.NavPane.close {
+  left: -208px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+  .header {
+    border-bottom: 1px solid rgba($highlight-high, .25);
+    #logo {
+      left: 221px;
+      background-color: $highlight-high;
+
+      &:hover {
+        background-color: $deepspace-light-grey;
+        // background-color: $primary-high;
+      }
+    }
+  }
+
+  .categoryHolder {
+    display: none;
+  }
+
+  #toggleButton {
+    bottom: 14px;
+    left: 229px;
+    top: auto;
+  }
+
+  transition: left .25s ease-out;
+}
+
+.NavPane.hide {
+  display: none;
+}
+//-------------------------------------------------------------------//
+
+
+//-- media queries --------------------------------------------------//
+//-- SideNav(NavPane) related ----------//
+//-- >= 1920px
+@media only screen and (min-width: $particle-media-xxl-min) {
+  .NavPane:not(.stay) {
+    display: none;
+  }
+}
+
+//-- <= 1239px particle-media-md-max
+//-- <= 1439px particle-media-lg-max
+@media only screen and (max-width: $particle-media-lg-max) {
+  .NavPane {
+    display: none;
+  }
+}
+//-- END SideNav(NavPane) related ------//
+
+
+//-- Large devices (laptops/desktops, 992px and up)
+@media only screen and (max-width: 991px) {
+  .TopBar {
+    .menuHolder ul a {
+      font-size: 14px !important;
+    }
+  }
+}
+
+//-- Medium devices (landscape tablets, 768px and up)
+@media only screen and (max-width: 767px) {
+  .TopBar {
+    #home {
+      display: none;
+    }
+
+    .menuHolder {
+      width: calc(100vw - 55px) !important;
+      left: 55px !important;
+      
+      ul {
+        justify-content: center !important;
+        padding-right: 32px !important;
+        a {
+          font-size: 13px !important;
+        }
+      }
+    }
+  }
+
+
+}
+
+//-- Small devices (portrait tablets and large phones, 600px and up)
+@media only screen and (min-width: $particle-media-sm-min) {
+  .TopBar {
+    #barButton {
+      display: none;
+    }
+  }
+}
+
+//-- Extra small devices (phones, 599px and down)
+@media only screen and (max-width: $particle-media-xs-max) {
+  .TopBar {
+    .menuHolder {
+      width: 100vw !important;
+
+      ul {
+        left: 100%;
+        height: 100vh;
+        background-color: rgba($deepspace-dark-grey, .95);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        a {
+          font-size: 18px !important;
+        }
+      }
+    }
+
+    #barButton {
+      visibility: visible;
+    }
+  }
+
+  .TopBar.light {
+    .menuHolder {
+      ul {
+        background-color: rgba($atmosphere-white, .95) !important;
+      }
+    }
+  }
+
+  .TopBar.hide, .TopBar.show {
+    top: 0px;
+    transition: top 0;
+  }
+
+  .BaseApp {
+    pointer-events: none;
+  }
+}
+//-------------------------------------------------------------------//

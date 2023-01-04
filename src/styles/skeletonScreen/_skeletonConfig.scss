@@ -1,0 +1,26 @@
+$white-94: rgba(white, .94);
+$white-75: rgba(white, .75);
+$white-64: rgba(white, .64);
+$white-15: rgba(white, .15);           //skeleton base color
+$white-07: rgba(white, .07);
+
+//-- for chartBkgHolder (.chartBkgHolder)
+$chart-holder-bkg-color: #323443;     //for rgba($secondary, .23) (Figma) == $surface3 == #323443
+//-- for chartSkeletonHolder (.skeleton-bar-chart)
+$chart-skeleton-bkg-color: #3d414f;   //for rgba(white, .06) (Figma)
+//-- for chartIconHolder (.skeleton-bar-chart.iconHolder)
+$chart-skeleton-icon-color: #878991;   //for rgba(white, .38) (Figma)
+//-- for chart skeleton gradient
+$chart-skeleton-gradient-dark: #5a5c61;
+
+//-- for loader (spinner)
+$loader-color: #a280ff;                //#a280ff(primary75), #9e7eff(old)
+$loader-duration: 1.2s;
+$loading-text-color: $white-64;          //#ebecef(secondary93) == $white-64
+
+//-- for skeletons
+$fade-base-duration: 1.5s;
+$shimmer-base-duration: 3s;
+// $fade-chart-duration: 1s;
+$fade-chart-duration: 1.5s; //-- updated on Oct/25/22
+$shimmer-chart-duration: 2s;

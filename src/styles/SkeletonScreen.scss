@@ -1,0 +1,1002 @@
+@import "config";
+@import "skeletonScreen/skeletonConfig";
+
+
+//-------------------------------------------------------//
+// SkeletonScreen Global
+//-------------------------------------------------------//
+.SkeletonScreen {
+    width: 100%;
+    height: 100% !important;    //overwrite 100vh
+
+    .container {
+        margin: 0 auto;
+        width: 1440px;
+        // border: 1px solid red;
+    }
+
+    section {
+        margin-top: 50px;
+        padding-bottom: 95px;
+        border-bottom: 1px solid rgba($atmosphere-white, .25);
+        width: 100%;   //containerLeft: 300 + 900 = 1200px (breakpoint)
+        // border: 1px solid orange;
+
+        h1 {
+            font-weight: normal;
+            font-size: 30px;
+            color: $white-94;
+            // border: 1px solid green;
+        }
+
+        h2 {
+            font-weight: normal;
+            font-size: 22px;
+            color: $white-94;
+            margin-top: 50px;
+            margin-bottom: 0px;
+        }
+    }
+
+    section:last-child {
+        border-bottom: none;
+    }
+}
+//------------------ END Skeleton Global ----------------//
+
+
+
+
+//-------------------------------------------------------//
+// Control Panel
+//-------------------------------------------------------//
+.SkeletonScreen {
+    .controlPanel {
+        padding-left: 10px;
+        padding-top: 0px;       //20px (old)
+        width: 300px;
+        height: 90%;
+        color:rgba($atmosphere-white, .75);
+        // border: 1px solid red;
+
+        .animationLabel, .durationLabel, .groupLabel, .checkboxLabel {
+            display: block;
+            margin-top: 15px;
+            margin-left: -10px;
+            padding: 5px;
+            // border: 1px solid yellow;
+        }
+
+        .groupLabel, .checkboxLabel {
+            display: inline-block;
+        }
+
+        .animTypeLabel {
+            padding-left: 20px;
+            margin-right: 0px;
+        }
+
+        .animTypeInput {
+            margin-left: -4px;
+            margin-right: 2px;
+            width: 14px;
+            height: 14px;
+        }
+
+        .durationInput {
+            font-size: 16px;
+            margin-left: 15px;
+            margin-right: 0px;
+            height: 20px;
+        }
+    }
+
+    .buttonHolder {
+        margin-top: 40px;
+        margin-left: 5px;
+        width: 58px;
+        border: 1px solid rgba($atmosphere-white, .5);
+    }
+
+    .playBt {
+        padding: 5px;
+        margin-left: 8px;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        background-color: $atmosphere-white;
+        mask-image: url(#{$asset_base}play.svg);
+        mask-position: center;
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        
+        &:hover {
+            background-color: $primary-high;
+        }
+    }
+
+    .pageControlPanel {
+        height: 75px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        color:rgba($atmosphere-white, .75);
+
+        .column {
+            padding-left: 20px;
+            padding-right: 20px;
+            // border: 1px solid red;
+        }
+
+        .durationInput {
+            height: 19px;
+        }
+
+        .column:first-child {
+            margin-left: -20px;
+        }
+
+        .column:last-child {
+            margin-left: 50px;
+        }
+
+        .pageButtonHolder {
+            width: 58px;
+            top: -10px;
+            border: 1px solid rgba($atmosphere-white, .5);
+        }
+    }
+}
+
+input:not([type=number]) {
+    cursor: pointer;
+}
+//-------------------- END Control Panel ----------------//
+
+
+
+
+//-------------------------------------------------------//
+// Components
+//-------------------------------------------------------//
+.SkeletonScreen {
+    //-- all the component containers -----------------------//
+    .compContainer {
+        display: flex;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        border: 1px solid rgba($atmosphere-white, .3);
+        // border: 1px solid yellow;
+    }
+
+    //-- spec container -------------------------------------//
+    .specContainer {
+        margin-top: -25px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        // border: 1px solid yellow;
+
+        .specPanel {
+            @include particle-font-fixed-width();
+            padding-left: 20px;
+            padding-top: 10px;
+            margin-left: 20px;
+            background-color: rgba(white, .1);
+
+            p {
+                font-size: 11px;
+                color: $white-64;
+            }
+        }
+        .specPanel.second {
+            margin-left: 1px;
+        }
+        // .specPanel.datagrid {
+        //     // margin-top: 50px;
+        // }
+    }
+
+    .specContainer.relationship {
+        margin-top: -25px;
+    }
+
+    //-- Relationship Component related styles --------------//
+    .relationshipCompContainer {
+        position: relative;
+        width: 645px;
+        height: 345px;
+        padding-top:30px;
+        // margin-top: 25px;
+        // border: 1px solid red;
+    }
+
+    .relationshipComp {
+        // margin: 0px 20px;
+        margin: 0px 10px;   //updated on Aug28
+        //
+        margin-top: -3px;
+        padding-top: 10px;
+        width: 328px;
+        height: 290px;
+        border-right: 1px solid rgba($atmosphere-white, .15);
+        // border: 1px solid green;
+
+        .groupHeader {
+            width: 100%;
+            height: 19px;
+            margin-bottom: 10px;
+
+            .group {
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 19px;
+                color: $white-94;
+            }
+        }
+
+        .header {
+            width: 100%;
+            height: 46px;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 15px;
+
+            color: $white-64;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .arrowIcon {
+                visibility: hidden;
+                background-image: url(../assets/double-chevron-right.svg);
+            }
+
+            .total {
+                // padding-right: 12px; 
+                padding-right: 20px;    //updated on Aug28
+            }
+        }
+
+        .bubbleHolder {
+            width: calc(100% - 20px);   //updated on Aug28
+            height: 204px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // border: 1px solid white;
+        }
+    }
+
+    .relationshipComp.isLast {
+        border-right: none;
+    }
+
+    .relationshipComp.Sm {
+        margin: 0px;
+        margin-left: 15px;
+        width: 200px;
+        height: 180px;
+        // border: 1px solid red;
+
+        .header {
+            width: 100%;
+            height: 40px;
+            font-size: 13px;
+            color:rgba($atmosphere-white, .65);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .bubbleHolder {
+            position: relative;
+            width: 100%;
+            height: 135px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // border: 1px solid grey;
+        }
+    }
+
+    .relationshipComp.show {
+        animation: fade-in .5s ease-in-out;    //04/21
+    }
+}
+//-------------------------------------------------------//
+
+
+
+//-- Chart (Bar&Line) Component related styles ----------//
+.SkeletonScreen {
+    .chartComponentContainer {
+        width: 805px;
+        height: 290px;
+    }
+
+    .chartComponentContainer.Lg {
+        width: 1253px;
+        height: 290px;
+        margin-top: 0px;
+        margin-bottom: 100px;
+        // border: 1px solid yellow;
+    }
+
+    .chartComponentContainer.Lg.item {
+        width: 930px;
+        height: 260px; 
+        border: none;
+        margin-bottom: 0px; //-- 10/25/22
+        // border: 1px solid yellow;
+    }
+
+    .bindComponentContainer {
+        width: 930px;
+        height: 280px;
+        border: none; 
+        margin-bottom: 0px;
+        // border: 1px solid yellow;
+    }
+
+    .chartHolder {
+        position: relative;
+        width: "461px";
+        height: "250px";
+        // border: 1px solid red;
+    }
+
+    .chartHolder.Lg {
+        width: "909px";
+        height: "250px";
+        // border: 1px solid orange;
+    }
+
+    .chartBkgHolder {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 6px;
+        background-color: $chart-holder-bkg-color; //$surface3 = #323443
+        // border: 1px solid white;
+    }
+
+    .chartBkgHolder.Lg {
+        background-color: $chart-holder-bkg-color
+    }
+
+    .chartHeader {
+        position: absolute;
+        top: 16px;
+        left: 22px;
+        text-transform: uppercase;
+        font-size: 13px;
+        font-weight: 500;
+        width: 200px;
+        height: 15px;
+        // border: 1px solid red;
+    }
+
+    .chartHeaderIcon {
+        position: absolute;
+        top: 16px;
+        right: 10px;
+        width: 24px;
+        height: 24px;
+        background-image: url("../assets/three-dots-v.svg");
+        background-repeat: no-repeat;
+    }
+
+    .bindHolder {
+        position: relative;
+        border-radius: 6px;
+        background-color: none;
+    }
+
+    .bindHeader {
+        position: absolute;
+        top: 16px;
+        left: 22px;
+        font-size: 18px;
+        font-weight: 500;
+        width: 900px;
+        height: 21px;
+        // border: 1px solid red;
+    }
+
+    .bindLoader {
+        position: absolute;
+        top: 95px;
+        left: 392px;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .loading-text {
+            text-align: center;
+            width: 100px;
+            margin-top: 37px;
+            margin-left: 52px;
+            color: $loading-text-color;
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 15px;
+        }
+    }
+
+    .chartContentHolder {
+        position: absolute;
+        visibility: hidden;
+        top: 50px;
+        left: 22px;
+        width: 100%;
+        height: 100%;
+        background-image: url("../assets/cartesian/bar-and-column-chart.svg");
+        background-repeat: no-repeat;
+        // border: 1px solid orange;
+    }
+
+    .chartContentHolder.Lg {
+        position: absolute;
+        visibility: hidden;
+        top: 50px;
+        left: 22px;
+        width: 100%;
+        height: 100%;
+        background-image: url("../assets/cartesian/bar-and-column-chart-lg.svg");
+        background-repeat: no-repeat;
+    }
+
+    .chartContentHolder.Lg.line {
+        background-image: url("../assets/cartesian/line-chart-lg.svg");
+    }
+
+    .chartContentHolder.show {
+        visibility: visible;
+        animation: fade-in .5s ease-in-out;
+    }
+
+    .chartSkeletonHolder {
+        position: absolute;
+        top: 50px;
+        left: 22px;
+        width: 416px;
+        height: 183px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .chartSkeletonHolder.Lg {
+        position: absolute;
+        top: 50px;
+        left: 22px;
+        width: 865px;
+        height: 183px;
+
+        // border: 1px solid red;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .binderContentHolder {
+        position: absolute;
+        visibility: hidden;
+        top: 50px;
+        left: 75px;
+        width: 672px;
+        height: 200px;
+        background-image: url("../assets/cartesian/service-graph.svg");
+        background-repeat: no-repeat;
+        // border: 1px solid orange;
+    }
+
+    .binderContentHolder.show {
+        visibility: visible;
+        animation: fade-in .5s ease-in-out;
+    }
+}
+//-------------------------------------------------------//
+
+
+//-- Grid Component related styles ----------------------//
+.SkeletonScreen {
+    .gridCompContainer {
+        width: 820px;
+        height: 572px;
+        // margin-top: 100px;
+        // border: 1px solid red;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .gridHolder {
+        position: relative;
+        width: 100%;
+        height: 602px;
+        padding-left: 10px;
+        // border: 1px solid orange;
+        border-right: 1px solid rgba($atmosphere-white, .15);
+    }
+
+    .gridBkgHolder1 {
+        visibility: hidden;
+        position: absolute;
+        width: 470px;
+        height: 522px;
+        background-image: url("../assets/bkg/data-grid-bkg1.svg");
+        // border: 1px solid red;
+    }
+
+    .gridContentHolder1 {
+        position: absolute;
+        top: 81px;
+        width: 100%;
+        height: calc(100% - 75px);
+        // border: 1px solid white;
+    }
+
+    .gridRowHolder {
+        margin-left: 20px;
+        display: flex;
+        justify-content: flex-start;
+        // border: 1px solid green;
+        height: 40px;
+
+        li {
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 12px;
+            list-style-type: none;
+            // border: 1px solid darkgreen;
+        }
+    }
+
+    .gridBkgHolder2 {
+        position: absolute;
+        visibility: hidden;
+        margin-left: 20px;
+        margin-top: 2px;
+        width: 909px;
+        height: 100%;
+        background-image: url("../assets/bkg/data-grid-bkg2.svg");
+    }
+
+    .gridBkgHolder2.show {
+        visibility: visible;
+        animation: fade-in .5s ease-in-out;
+        // border: 1px solid purple;
+    }
+
+    .gridContentHolder2 {
+        position: absolute;
+        margin-top: 1px;
+        width: 100%;
+        height: 100%;
+        // border: 1px solid white;
+    }
+}
+//-------------------- END Components -------------------//
+
+
+
+//-------------------------------------------------------//
+// Pages
+//-------------------------------------------------------//
+.SkeletonScreen {
+    .pageContainer {
+        // display: flex;
+        width: 1440px;
+        height: 1024px;
+        // margin-bottom: 75px;
+        margin-bottom: 100px;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        border: 1px solid rgba($atmosphere-white, .3);
+
+        .relationshipComp {
+            border-right: none;
+        }   
+
+        .entityHolder {
+            border-right: 1px solid rgba($atmosphere-white, .15);
+        }
+
+        .entityHolder.isLast {
+            border-right: none;
+        }
+
+        .contentHolder {
+            width: 100%;
+            height: 100%;
+            background-image: url("../assets/bkg/observeBkg.svg");
+
+            .itemContainer {
+                position: relative;
+                top: 254px;
+                left: 58px;
+                width: 1380px;
+                height: 100%;
+                overflow-y: hidden;
+                // border: 1px solid yellow;
+                display: flex;
+                // align-items: flex-start;
+                justify-content: left;
+                flex-direction: column;
+
+                .row {
+                    width: 100%;
+                    margin-bottom: 0px;
+                    margin-top: 0px;
+                    display: flex;
+                    align-items: flex-start;
+                    // justify-content: center;
+                    // border: 1px solid red;
+                }
+            }
+        }
+
+        .contentHolder.services {
+            background-image: url("../assets/bkg/servicesBkg.svg");
+
+            display: flex;
+            align-items: flex-start;
+
+            .relationshipPanel {
+                margin-left: 50px;
+                margin-top: 80px;
+                width: 230px;   //test
+                height: 100%;
+                // border: 1px solid white;
+            }
+
+            .chartPanel {
+                width: 929px; //test
+                height: 100%;
+                // margin-top: 45px;
+                // border: 1px solid yellow;
+            }
+        }
+
+        .contentHolder.pods {
+            position: relative;
+            background-image: url("../assets/bkg/podsBkg.svg");
+            display: flex;
+
+            .relationshipPanel {
+                position: absolute;
+                top: 80px;
+                left: 48px;
+                width: 230px;
+                height: 100%;
+                // border: 1px solid white;
+            }
+
+            .gridPanel {
+                position: absolute;
+                top: 334px;
+                left: 260px;
+                width: 945px;
+                height: calc(100% - 350px);
+                // border: 1px solid yellow;
+            }
+
+            .actionPropertyPanel {
+                position: absolute;
+                top: 200px;
+                left: 1228px;
+                width: 228px;   //230px
+                height: calc(100% - 210px);
+                // border: 1px solid white;
+            }
+
+            // border: 1px solid blue;
+        }
+    }
+
+    .entityHolder.Sm {
+        width: 200px;
+        height: 180px;
+        margin-left: 0px;
+        // border: 1px solid yellow;
+        border-right: none;
+        border-bottom: 1px solid rgba($atmosphere-white, .15);
+    }
+
+    .relationshipComp.Special {
+        margin: 0px;
+        margin-left: 15px;
+        width: 214px;   //200px
+        height: 150px;
+        // height: 100%;
+        visibility: visible;
+        // border: 1px solid blue;
+    }
+
+    .entityHolder.Special {
+        position: relative;
+        width: 200px;
+        height: 150px;
+        border-bottom: 1px solid rgba($atmosphere-white, .15);
+        border-right: none;
+        padding: 0px;
+        // border: 1px solid yellow;
+    
+        .header {
+            margin-top: 0px;
+        }
+
+        .entityBkgHolder {
+            position: absolute;
+            top: -25px;
+            left: -18px;
+            width: calc(100% + 35px);
+            height: calc(100% + 20px);
+            visibility: hidden; 
+            // border: 1px solid red;
+        
+            &.bkg1 {
+                background-image: url(../assets/bkg/rc-sm-section1.svg);
+            }
+            
+            &.bkg2{
+                background-image: url(../assets/bkg/rc-sm-section2.svg);
+            }
+            
+            &.bkg3{
+                background-image: url(../assets/bkg/rc-sm-section3.svg);
+            }
+            
+            &.bkg4{
+                background-image: url(../assets/bkg/rc-sm-section4.svg);
+            }
+        }
+
+        .entityBkgHolder.show {
+            visibility: visible;
+            animation: fade-in .5s ease-in-out;
+        }
+
+        .bubbleHolder.Special {
+            position: absolute;
+            top: 40px;
+            width: 100%;
+            height: 104px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // border: 1px solid red;
+        }
+    }
+
+    .entityHolder.Sm.isLast {
+        border-bottom: none;
+    }
+}
+//---------------------- END Pages ----------------------//
+
+
+
+//-------------------------------------------------------//
+// Skeletons
+//-------------------------------------------------------//
+.SkeletonScreen {
+    //-- for most of skeletons
+    .fade-base {
+        background-color: $white-15;
+        animation: fade-in-out $fade-base-duration linear infinite alternate; //3s to 1.75s
+    }
+    .shimmer-base {
+        background-image: linear-gradient( to right,
+        $white-15 5%,
+        $white-07 45%, 
+        $white-15 85%
+        );
+        background-size: 200% 100%; 
+        animation: shimmering-base $shimmer-base-duration linear infinite;    //shimmering moves from 0% to -200%
+    }
+
+    //-- for charts
+    .fade-chart {
+        animation: fade-in-out $fade-chart-duration linear infinite alternate;
+    }
+    .shimmer-chart {
+        background-image: linear-gradient( to right,
+        $chart-skeleton-icon-color 0%,
+        $chart-skeleton-gradient-dark 15%,
+        $chart-skeleton-icon-color 30%,
+        $chart-skeleton-icon-color 100%
+        );
+        background-size: 200% 100%; 
+        animation: shimmering-chart $shimmer-chart-duration linear infinite;         // shimmering-chart moves from 50% to -150%
+    }
+
+    //-- for texts
+    .skeleton-text-headline {
+        width: 108px;
+        height: 16px;
+        border-radius: 3px;
+        display: inline-block;
+        margin: 0;
+        overflow-x: visible;//test
+    }
+
+    .skeleton-text-title {
+        width: 170px;
+        height: 16px;
+        border-radius: 3px;
+        display: inline-block;
+        margin: 0;
+        overflow-x: visible;//test
+    }
+
+    .skeleton-text-title-sm {
+        width: 81px;
+        height: 16px;
+        border-radius: 3px;
+        display: inline-block;
+        margin: 0;
+    }
+
+    //-- generic text holder --//
+    .skeleton-text {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: 3px;
+        display: inline-block;
+        margin: 0;
+        // border: 1px solid green;
+
+        .skeleton-text-p {
+            visibility: hidden;
+            position: absolute;
+            top: -12px;
+            left: 2px;
+            color: $white-64;
+            font-size: 13px;
+            text-align: left;
+            // border: 1px solid magenta;
+        }
+
+        .skeleton-text-p.show {
+            visibility: visible;
+            animation: fade-in .5s ease-in-out;
+        }
+    }
+
+    .skeleton-text.property {
+        position: relative;
+        margin-top: 24px;
+        // border: 1px solid red;
+
+        .label {
+            position: absolute;
+            top: -20px;
+            color: $white-94;
+            text-align: left;
+        }
+
+        .desc {
+            position: absolute;
+            top: -5px;
+            color: $white-64;
+            text-align: left;
+        }
+    }
+
+    .skeleton-bubble {
+        width: 74px;   //***
+        height: 74px;
+        border-radius: 50%;
+        margin: 0;
+    }
+
+    .skeleton-bubble-sm {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin: 0;
+        // border: 1px solid yellow;
+    }
+
+    .skeleton-bar-chart {
+        border-radius: 6px;
+        background-color: $chart-skeleton-bkg-color;
+
+        .iconHolder {
+            width: 48px;
+            height: 48px;     
+            background-color: $chart-skeleton-icon-color;
+            mask-position: center;
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+            mask-size: contain;
+            mask-repeat: no-repeat;
+
+            &.bar {
+                mask-image: url("../assets/skeletonScreen/icon/chart/histogram.svg"); 
+            }
+
+            &.line {
+                mask-image: url("../assets/skeletonScreen/icon/chart/line.svg"); 
+            }
+        }
+
+        //-- delete later, after updating components
+        .iconHolderBar {
+            width: 48px;
+            height: 48px;
+            background-color: $chart-skeleton-icon-color;
+            mask-image: url("../assets/skeletonScreen/icon/chart/histogram.svg"); 
+            mask-position: center;
+            mask-size: contain;
+            mask-repeat: no-repeat;
+        }
+
+        //-- delete later, after updating components
+        .iconHolderLine {
+            width: 48px;
+            height: 48px;
+            background-color: $chart-skeleton-icon-color;
+            mask-image: url("../assets/skeletonScreen/icon/chart/line.svg"); 
+            mask-position: center;
+            mask-size: contain;
+            mask-repeat: no-repeat;
+        }
+    }
+}
+//------------------------------------------------------//
+
+
+
+//----------------------------------------------//
+// Loader(spinner)
+//----------------------------------------------//
+.SkeletonScreen {
+    .ring {
+        height: 48px;   //70, 60, 48
+        width: 48px;
+        position: relative;
+        left: calc(50% - 24px); //35, 30, 24
+        top: calc(50% - 24px);  //35
+
+        div {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            border: 8px solid $loader-color;
+            border-radius: 50%;
+            animation: loader-ring $loader-duration $particle-easing-standard infinite;
+            border-color: $loader-color transparent transparent transparent;
+
+            &:nth-child(1) {
+                animation-delay: -0.3s;
+            }
+
+            &:nth-child(2) {
+                animation-delay: -0.2s;
+            }
+
+            &:nth-child(3) {
+                animation-delay: -0.1s;
+            }
+        }
+    }
+}
+//----------------------------------------------//
+
+
+@import "skeletonScreen/skeletonMotion";
+@import "skeletonScreen/skeletonMedia";

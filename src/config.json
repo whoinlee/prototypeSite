@@ -1,0 +1,213 @@
+{
+    "home": {
+        "title": "Particle Prototypes",
+        "path": "/",
+        "isBackHome": false,
+        "isDark": false,
+        "dataURL": "",
+        "projects": [
+            {
+                "title": "Drag and Drop Grid",
+                "path": "/dragndrop",
+                "componentName": "DragDropIFrame",
+                "isIFrame": true,
+                "isActive": true,
+                "isDark": true,
+                "dataURL": "./dragndrop/index.html"
+            },
+            {
+                "title": "Skeleton Loading Screen",
+                "path": "/skeletonScreen",
+                "componentName": "SkeletonScreen",
+                "isBackHome": false,
+                "isActive": true,
+                "isDark": true,
+                "dataURL": ""
+            }
+            ,{
+                "title": "Inspector Panel Resizing",
+                "path": "/inspectorPanel",
+                "componentName": "InspectorPanel",
+                "isBackHome": false,
+                "isActive": true,
+                "isDark": true,
+                "dataURL": ""
+            }
+            ,{
+                "title": "Relationship Graph Improvements",
+                "path": "/relationshipGraph",
+                "componentName": "RelationshipGraph",
+                "isBackHome": false,
+                "isActive": true,
+                "isDark": true,
+                "dataURL": ""
+            },
+            {
+                "title": "Display Density",
+                "path": "/displayDensity",
+                "componentName": "DisplayDensity",
+                "isBackHome": false,
+                "isActive": true,
+                "isDark": true,
+                "dataURL": ""
+            }
+            ,{
+                "title": "Grouping Visualization",
+                "path": "/groupingVisualization",
+                "componentName": "GroupingVisualization",
+                "isBackHome": true,
+                "isActive": false,
+                "isDark": true,
+                "dataURL": "https://us-central1-design-tech-figma.cloudfunctions.net/jira/services"
+            }
+            ,{
+                "title": "Scalable Hypergraph",
+                "path": "/hypergraph",
+                "componentName": "HyperGraph",
+                "isBackHome": true,
+                "isActive": false,
+                "isDark": false,
+                "dataURL": ""
+            }
+        ]
+    },
+    "topBar": {
+        "logo": {
+            "path": "/"
+        },
+        "home": {
+            "path": "https://particle.appdynamics.com/",
+            "text": "PARTICLE",
+            "version": "5.2"
+        },
+        "menu": [
+            {
+                "title": "Home",
+                "path": "/"
+            },
+            {
+                "title": "Request",
+                "url": "https://jira.corp.appdynamics.com/secure/CreateIssueDetails!init.jspa?pid=27000&issuetype=18800&summary=[Prototype%20Request]:%20&customfield_11322=DTECH-250&priority=4"
+            },
+            {
+                "title": "Particle",
+                "url": "https://particle.appdynamics.com/"
+            },
+            {
+                "title": "Stories",
+                "url": "http://stories.appdynamics.com/"
+            },
+            {
+                "title": "UI-Kit",
+                "url": "https://uik.appd-ui.com/"
+            }
+        ]
+    },
+    "navPane": [
+        {
+            "title" : "Available",
+            "menu": [
+                {
+                    "title": "Drag and Drop Grid",
+                    "path": "/dragndrop",
+                    "subMenu": []
+                },
+                {
+                    "title": "Skeleton Loading Screen",
+                    "path": "/skeletonScreen",
+                    "subMenu": [ 
+                        {
+                            "title": "Components",
+                            "path": "/skeletonScreen#skeletonComponents"
+                        },
+                        {
+                            "title": "Page Examples",
+                            "path": "/skeletonScreen#skeletonExamples"
+                        },
+                        {
+                            "title": "- Observe Page (Relationship)",
+                            "path": "/skeletonScreen#skeletonObservePage"
+                        },
+                        {
+                            "title": "- Services Page (Charts & Graphs)",
+                            "path": "/skeletonScreen#servicesPage"
+                        },
+                        {
+                            "title": "- Pods Page (Data-Grid etc)",
+                            "path": "/skeletonScreen#podsPage"
+                        }
+                    ]
+                },
+                {
+                    "title": "Inspector Panel Resizing",
+                    "path": "/inspectorPanel",
+                    "subMenu": [ 
+                        {
+                            "title": "Fixed Width",
+                            "path": "/inspectorPanel#fixedWidth"
+                        },
+                        {
+                            "title": "Small Panel",
+                            "path": "/inspectorPanel#smallPanel"
+                        },
+                        {
+                            "title": "Large Panel",
+                            "path": "/inspectorPanel#largePanel"
+                        }
+                    ]
+                },
+                {
+                    "title": "Relationship Graph Improvements",
+                    "path": "/relationshipGraph",
+                    "subMenu": [ 
+                        {
+                            "title": "Components",
+                            "path": "/relationshipGraph#relationshipComponents"
+                        },
+                        {
+                            "title": "Page Examples",
+                            "path": "/relationshipGraph#relationshipExamples"
+                        },
+                        {
+                            "title": "- Observe Page",
+                            "path": "/relationshipGraph#relationshipObservePage"
+                        },
+                        {
+                            "title": "- Sub Page",
+                            "path": "/relationshipGraph#subPage"
+                        },
+                        {
+                            "title": "- Single Entity (Sub-sub) Page",
+                            "path": "/relationshipGraph#singleEntityPage"
+                        }
+                    ]
+                },
+                {
+                    "title": "Display Density",
+                    "path": "/displayDensity",
+                    "subMenu": []
+                }
+            ]
+        }
+      , {
+            "title" : "In Progress",
+            "menu": [
+            ]
+        }
+      , {
+            "title" : "In Queue",
+            "menu": [
+                {
+                    "title": "Grouping Visualization",
+                    "path": "/groupingVisualization",
+                    "subMenu": []
+                },
+                {
+                    "title": "Scalable Hypergraph",
+                    "path": "/hypergraph",
+                    "subMenu": []
+                }
+            ]
+        }
+    ]
+}

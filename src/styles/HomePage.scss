@@ -1,0 +1,17 @@
+@import "config";   //-- asset bases & color variables
+
+
+//-------------------------------------------------------//
+// Home Page global styles
+//-------------------------------------------------------//
+.HomePage {
+    .headline {
+        position: absolute;
+        top: 75px;
+    }
+
+    .homeLink {
+        color: $deepspace-dark-grey;
+        margin-top: 4px;
+    }
+}

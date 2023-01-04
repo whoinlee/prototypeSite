@@ -1,0 +1,109 @@
+//----------------------------------------------//
+// skeleton motion related 
+//----------------------------------------------//
+@keyframes fade-in {
+    0% {
+        opacity: 0%;
+    }
+    
+    100% {
+        opacity: 100%;
+    }
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 15%;
+  }
+  
+  85% {
+    opacity: 100%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+//-- for most of skeletons
+@keyframes shimmering-base {
+    0% {
+      background-position: 0% 0;
+    }
+  
+    100% {
+      background-position: -200% 0;
+    }
+}
+
+//-- for chart skeleton
+@keyframes shimmering-chart {
+  0% {
+    background-position: 50% 0; 
+  }
+
+  100% {
+    background-position: -150% 0;
+  }
+}
+
+
+//----------------------------------------------//
+
+
+//----------------------------------------------//
+// loader(spinner) related
+//----------------------------------------------//
+@keyframes loader-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
+
+@keyframes loader-pacman {
+    0% {transform: rotateZ(0deg);}
+    100% {transform: rotateZ(360deg);}
+}
+
+@keyframes loader-outer {
+    0% {transform: rotateZ(-24deg);}
+    100% {transform: rotateZ(336deg);}
+}
+
+@keyframes loader-inner {
+    0%,15% {
+     opacity: 0;
+    }
+    16% {
+     opacity: 1;
+     transform: rotateZ(90deg);
+    }
+    40% {
+     transform: rotateZ(180deg);
+    }
+    60% {
+     transform: rotateZ(270deg);
+    }
+    80%, 100% {
+     opacity: 0;
+    }
+}
+
+@keyframes loader-outer-original {
+    0%, 15% {
+     opacity: 1;
+     animation-timing-function: step-end;
+    }
+    16%, 79% {
+     opacity: 0;
+     animation-timing-function: step-end;
+    }
+    80%, 100% {
+     opacity: 1;
+     animation-timing-function: step-end;
+    }
+}
+//----------------------------------------------//

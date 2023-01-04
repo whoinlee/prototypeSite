@@ -1,0 +1,18 @@
+@media only screen and (min-width: $particle-media-xl-min) {
+    .SkeletonScreen {
+        .container {
+            margin: 0 auto;
+        }
+    }
+}
+
+@media only screen and (max-width: 1650px) {
+// $particle-media-lg-max: 1439px
+// @media only screen and (max-width: $particle-media-lg-max) {
+    .SkeletonScreen {
+        .container {
+            margin-left: 100px; //300px, 10/25/22
+            margin-right: auto;
+        }
+    }
+}

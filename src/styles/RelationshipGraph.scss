@@ -1,0 +1,965 @@
+@import "config";   //-- asset bases & color variables
+@import "base";     //-- scrollbar & controlPanel & specPanel
+@import "relationshipGraph/rgBase";
+
+
+
+//-------------------------------------------------------//
+// RelationshipGraph Global
+//-------------------------------------------------------//
+ .RelationshipGraph {
+    padding: 0;
+    margin: 0;
+    width: 100% !important;     //overwrite 100vw
+    height: 100% !important;    //overwrite 100vh
+    box-sizing: border-box;
+
+    div.container { //yellow
+        position: absolute;
+        top: 0px;
+        // left: 100px;
+        width: calc(100vw - 230px); //200px (115px x 2)
+        margin-right: auto;
+        min-width: 600px;
+        // border: 1px solid yellow;
+    }
+
+    section {       
+        margin-top: 50px;
+        padding-bottom: 125px;
+        min-width: 600px;
+        border-bottom: 1px solid rgba($atmosphere-white, .25);
+        // border: 1px solid orange;
+       
+        h1 {        //green
+            font-weight: normal;
+            font-size: 30px;
+        }
+
+        h2 {
+            // border: 1px solid red;
+            font-weight: normal;
+            font-size: 22px;
+            color: $white-94;
+            margin-top: 50px;
+        }
+    }
+
+    section:last-child {
+        border-bottom: none;
+        padding-bottom: 120px;  //-- total: 195 (.examplePanel margin-bottom: 75px)
+    }
+}
+//-------------------------------------------------------//
+
+
+
+//-------------------------------------------------------//
+// RGComponent, RGComponentSection, RGPaneComponentSection
+//-------------------------------------------------------//
+.RelationshipGraph {
+    //--.particle-rg-fluid
+    .rgComponentSection {
+        position: relative;
+        padding: $particle-spacing-6x $particle-spacing-4x;
+        min-width: calc($particle-body-width-min + $particle-spacing-4x * 2);
+        //
+        border: none;
+        
+        &.outline {
+            border: 1px solid rgba($atmosphere-white, .3);
+            padding-left: $particle-spacing-4x * 2;
+            // padding-left: $particle-spacing-4x;
+            padding-right: $particle-spacing-4x;
+        }
+
+        .particle-rg-fluid {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            display: grid;
+            grid-gap: $particle-rg-gutter;
+            //
+            left: $particle-rg-margin;
+            width: calc(100% - #{2*$particle-rg-margin});
+            z-index: -1;
+        }
+
+        .sectionHeader {
+            // border: 1px solid green;
+            // background-color: pink;
+            //
+            height: $rg-component-section-header-height;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            border-bottom: none;
+            
+            &:hover{
+                span.sectionTitle, h4 {
+                    color: white;
+                    // text-decoration: underline;
+                }
+            }
+
+            i.sectionOpener {
+                // border: 1px solid pink;
+                //
+                margin-left: -($rg-icon-width + 2px);
+                background-color: $white-94;
+                mask-image: url('#{$icon_base}navigation/chevronRight.svg');
+                mask-position: center;
+                mask-size: $rg-icon-width $rg-icon-height;
+                mask-repeat: no-repeat;
+                transition: all .15s ease-in;
+
+                &.open {
+                    transform: rotate(90deg);
+                    background-color: white;
+                }
+            }
+
+            span.sectionTitle, h4 {
+                font-size: 18px;
+                line-height: 21px;
+                color: $white-94;
+            }
+        }
+
+        .sectionHolder {
+            display: none;
+            margin-left: -$rg-icon-width;
+            width: calc(100% + $rg-icon-width + 2px);
+            height: 100%;
+
+            &.show {
+                // border: 1px solid $white-75;
+                // background-color: $pink-70;
+                //
+                // position: relative;
+                //-- 09/08
+                display: flex;
+                // justify-content:flex-start;
+                // align-items:flex-start;
+                flex-wrap: wrap;
+                
+            }
+        }
+
+        .gridHolder {
+            display: none;
+            margin-left: -$rg-icon-width;
+            width: calc(100% + $rg-icon-width + 2px);
+            height: 100%;
+
+            &.show {
+                position: relative;
+                display: block;
+            }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax($rg-component-min-width, 1fr));
+            grid-auto-flow: dense;
+            grid-gap: $particle-rg-gutter;
+        }
+
+        .grid.grid1 {
+            grid-template-columns: repeat(auto-fill, minmax($rg-component-min-width, 1fr));
+        }
+
+        .grid.grid2 {
+            @media (min-width: $particle-media-xs-min) {
+                //2
+                grid-template-columns: minmax($rg-component-min-width, 1fr) minmax($rg-component-min-width, 1fr);
+            }
+
+            @media (min-width: $particle-media-md-min) {
+            // @media (min-width: ($particle-media-md-min + #{$rg-section-offset * 2})) {
+                //3
+                grid-template-columns: minmax($rg-component-min-width, 1fr) minmax($rg-component-min-width, 1fr)
+                                       minmax($rg-component-min-width, 1fr);
+            }
+
+            @media (min-width: $particle-media-xxl-min) {
+                // @media (min-width: calc($particle-media-xxl-min + #{$rg-section-offset * 2})) {
+                //5
+                grid-template-columns: minmax($rg-component-min-width, 1fr) minmax($rg-component-min-width, 1fr) 
+                minmax($rg-component-min-width, 1fr) minmax($rg-component-min-width, 1fr) 
+                minmax($rg-component-min-width, 1fr);
+            }
+        }
+
+        .grid > div {
+            background: transparent;
+            width: 100%;
+            // border-radius: 6px;
+        }
+
+        .grid.showBkg > div {
+            background: $white-10; 
+        }
+    }
+
+    .rgComponent {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        // width: 246px;   //230px + 16px
+        width: calc(100% - 20px);
+        min-width: 190px;
+        height: calc($rg-component-header-height + $rg-component-holder-height);;  //140px + 47px
+
+        // margin-left: $rg-icon-width;
+        // padding-left: $rg-icon-width;
+        padding-left: calc($rg-icon-width - $particle-rg-gutter);
+        margin-right: $particle-spacing-4x;
+        margin-bottom: $particle-spacing-3x;
+        border-right: 1px solid $white-15;
+
+        .componentHeader {
+            // border: 1px solid pink;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 15px;
+            color: $white-64;
+
+            height: $rg-component-header-height;
+            cursor: pointer;
+
+            &:hover {
+                color: $primary-82;
+                // text-decoration: underline;
+                i.chevronRight {
+                    opacity: 100%;
+                }
+            }
+
+            i.chevronRight {
+                background-color: $white-64;
+                mask-image: url('#{$icon_base}navigation/chevronRight.svg');
+                mask-repeat: no-repeat;
+                mask-size: $rg-icon-width $rg-icon-height;
+
+                width: $rg-icon-width;
+                height: $rg-icon-height;
+
+                &:hover {
+                    background-color: $primary-82;
+                }
+            }
+
+            .totalNum {
+                padding-right: 16px;    //to be matched to the rgComponent margin-right: 16px
+            }
+        }
+
+        .componentHolder {
+            // border: 1px solid rgba(orange, .5);
+
+            display: flex;
+            align-items: center;
+            // width: 230px;
+            width: calc(100% - 18px);
+            height: $rg-component-holder-height;
+
+            &.centerAlign {
+                .entityHolder {
+                    justify-content: center;
+                }
+            }
+
+            &.isFocused {
+                // border: 1px solid rgba($primary-69, .75);
+                border: 1px solid rgba(white, .30);
+                border-style: dashed;
+            }
+
+            .entityHolder {
+                display: flex;
+                align-items: center;
+
+                // border-radius: 6px;
+                width: 100%;
+                height: 100%;
+                padding: 0px 5px;
+
+                background: none;
+
+                &.show {
+                    background-color: rgba($primary-69, .30);
+                }
+
+                &.bkgHover {
+                    background-color: $white-10;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .rgPaneComponentSection, 
+    .rgPaneSingleEntitySection {
+        // border: 1px solid purple;
+        margin-bottom: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        min-width: 230px;
+
+        .sectionHeader {
+            // border: 1px solid pink;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            i.sectionOpener {
+                margin-left: -20px;
+                background-color: $white-75;
+                mask-image: url('#{$icon_base}navigation/chevronRight.svg');
+                mask-position: center;
+                mask-size: 20px 20px;
+                mask-repeat: no-repeat;
+                transition: all .15s ease-in;
+                &.open {
+                    transform: rotate(90deg);
+                }
+            }
+
+            span.sectionTitle, h4 {
+                font-size: 14px;
+                line-height: 17px;
+                color: $white-75;
+            }
+
+            &:hover {
+                i.sectionOpener {
+                    background-color: $white-94;
+                }
+
+                span.sectionTitle, h4 {
+                    color: $white-94;
+                }
+            }
+        }
+
+        .sectionHeader.open {
+            i.sectionOpener {
+                background-color: $white-94;
+            }
+
+            span.sectionTitle, h4 {
+                color: $white-94;
+            }
+        }
+
+        .sectionHolder {
+            display: none;
+
+            &.show {
+                // border: 1px solid yellow;
+                display: flex;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+
+                div.rgPaneComponent:first-child,
+                div.rgPaneSingleEntity:first-child {
+                    margin-top: 0px;
+                    margin-left: -12px;
+                    padding-left: 12px;
+                    padding-top: 10px;
+                    width: calc(100% + 12px);
+                    height: 130px;
+                    border-top: 1px solid $white-75;
+                }
+            }
+        }
+    }
+
+    .rgPaneComponent, 
+    .rgPaneSingleEntity {
+        // border: 1px solid pink; //testing
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 190px;
+        height: 120px;      //updated: 18px header + margin-bottom: 4px + 90px holder + 8px (p-bottom)
+        padding-bottom: 8px;//updated
+        margin-top: 10px;
+        border-bottom: 1px solid $white-15;
+ 
+        .entityHeader {
+            // border: 1px solid orange;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start; 
+
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 15px;
+            color: $white-64;
+            cursor: pointer;
+
+            width: 190px;
+            height: 18px;       //updated
+            margin-bottom: 4px;
+            
+            &:hover {
+                color: $primary-82;
+                text-decoration: underline;
+
+                i.chevronRight {
+                    background-color: $primary-82;
+                }
+            }
+
+            i.chevronRight {
+                background-color: $white-64;
+                mask-image: url('#{$icon_base}navigation/chevronRight.svg');
+                mask-repeat: no-repeat;
+                mask-size: $rg-icon-width $rg-icon-height;
+                width: $rg-icon-width;
+                height: $rg-icon-height;
+            }
+
+            .totalNum {
+                padding-right: 5px;
+            }
+        }
+
+        .entityHeader.selected {
+            color: $primary-82;
+            cursor: default;
+            text-decoration: none;
+
+            i.chevronRight {
+                background-color: $primary-82;
+            }
+        }
+
+        .entityHolder {
+            // border: 1px solid green;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            width: 100%;
+            height: 100px;
+
+            // border-radius: 6px;
+            background: none;
+
+            &.bkgHover {
+                background-color: $white-10;
+                cursor: pointer;
+            }
+
+            //-- .show overrides .bkgHover
+            &.show {
+                cursor: default;
+                background-color: rgba($primary-69, .30);
+            } 
+
+            .bubbleHolder {
+                // border: 1px solid green;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 15px;
+                // padding: 10px 5px;
+                padding: 5px 5px;
+                max-height: 80px;
+                background: none;
+            }
+
+            .labelHolder {
+                // border: 1px solid red;
+                font-weight: 400;
+                font-size: 13px;
+                margin-left: 5px;
+                color: $white-94;
+                cursor: default;
+            }
+        }
+
+        .entityHolder.centerAlign {
+            // border: 1px solid green;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+            .bubbleHolder.singleEntity {
+                margin-top: 15px;
+                // border: 1px solid red;
+            }
+        }
+    }
+}
+//----- END PaneComponent -------------------------------//
+
+
+
+//-------------------------------------------------------//
+// ExamplePanelObserve and ExamplePanelSubpage
+//-------------------------------------------------------//
+.RelationshipGraph {
+    .examplePanel {
+        // border: 1px solid red;
+        margin-top: 30px;
+        height: 1024px;
+        margin-bottom: 75px;
+        
+        div.panelContainer, div.panelContainer.observe {
+            position: absolute;
+            left: -48px;    //**********//
+            width: calc(100% + 96px);
+            // min-width: calc(50px + 50px + 230px + 230px + 12px + 12px + 600px);
+            height: 1024px;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+            border: 1px solid rgba($atmosphere-white, .3);
+
+            .leftNavPane {
+                width: 48px;                //**********//
+                background-image: url(../assets/bkg/navigation.svg);
+                background-repeat: no-repeat;
+            }
+
+            .contentPane {
+                // border: 1px solid red;
+                width: calc(100% - 48px);   //**********//
+                min-width: 600px;
+                
+                .topBar {
+                    // border: 1px solid red;
+                    height: 48px;   //updated from 45px to 48px
+                    width: 100%;
+                    margin-bottom: 2px;
+                    background-color: $surface-2;   //$surface-2: #262939 == secondary19
+
+                    .breadcrumb {
+                        // border: 1px solid red;
+                        position: absolute;
+                        left: 68px;
+                        // top: 13px;
+                        top: 17px;
+                        width: 320px;
+                        height: 20px;
+                        background-repeat: no-repeat;
+
+                        font-size: 13px;
+                        align-items: center;
+
+                        span.prev, span.prevPrev {
+                            color: $white-70;
+                            cursor: pointer;
+                            &:hover {
+                                color: #bca3ff;
+                                text-decoration: underline;
+                            }
+                        }
+
+                        span.curr {
+                            color: #bca3ff;
+                            cursor: default;
+                        }
+                    }
+
+                    .topBarMenu {
+                        position: absolute;
+                        right: 20px;
+                        top: 8px;
+                        width: 286px;
+                        height: 30px;
+                        background-image: url(../assets/bkg/topBarMenu.svg);
+                    }
+                }
+
+                .selectionTiles {
+                    // border: 1px solid red;
+                    height: 61px;
+                    width: calc(100% - $particle-spacing-3x * 2);
+                    margin-top: 11px;
+                    margin-left: $particle-spacing-3x;
+                    margin-right: $particle-spacing-3x;
+                    overflow-x: hidden;
+                    margin-bottom: 16px;
+                    background-image: url(../assets/bkg/observe/selectionTiles.svg);
+                    background-repeat: no-repeat;
+                }
+
+                .contentFilter {
+                    // border: 1px solid orange;
+                    height: 43px;
+                    margin-left: 12px;
+                    margin-right: 12px;
+                    margin-bottom: 28px;
+                    border-bottom: 1px solid $white-15;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .filterLeft {
+                        // background-color: rgba(green, .5);
+                        width: 220px;
+                        height: 43px;
+                        display: flex;
+                        
+                        .filterIcon {
+                            margin-left: 12px;
+                            margin-top: 9px;
+                            width: 24px;
+                            height: 24px;
+                            // color: $white-64;
+                            background-color: $white-64;
+                            // background-image: url('#{$asset_base}base/filter.svg');
+                            mask-image: url('#{$icon_base}actions/filter.svg');
+                            mask-repeat: no-repeat;
+                            mask-size: 24px 24px;
+                        }
+
+                        .filterSelections {
+                            margin-left: 8px;
+                            margin-top: 6px;
+                            // border: 1px solid red;
+                            width: 173px;
+                            height: 30px;
+                            background-size: 173px 30px;
+                            background-image: url('#{$asset_base}bkg/observe/filterSelections.svg');
+                            background-repeat: no-repeat;
+                        }
+                    }
+
+                    .clearButton {
+                        margin-right: 12px;
+                        margin-top: 6px;
+                        width: 65px;
+                        height: 30px;
+                        // background-color: rgba(green, .5);
+                        background-size: 65px 30px;
+                        background-image: url('#{$asset_base}bkg/observe/clearButton.svg');
+                        background-repeat: no-repeat; 
+                    }
+                }
+
+                .content {
+                    // border: 1px solid red;
+                    margin-top: -28px;  //to make top margin to 20px (bc, padding top 24px)
+                    width: calc(100% - 10px);   //12px: margin-right (2px from the scrollbar track)
+                    min-width: $particle-body-width-min;
+                    overflow-y: auto;
+                    max-height: 765px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                }
+
+                .content.observe {
+                    position: relative;
+                    // border: 1px solid green;
+                    margin-left: $particle-spacing-3x;
+                    margin-right: $particle-spacing-3x;
+                    width: calc(100% - $particle-spacing-3x * 2);
+
+                    .particle-rg-fluid {
+                        // border: 1px solid $pink-70-50;
+                        position: absolute;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        display: grid;
+                        grid-column-gap: $particle-rg-gutter;
+                    }
+                }
+
+                .content.subpage {
+                    // border: 1px solid pink;
+                    position: relative;
+                    display: flex;
+                    width: 100%; 
+                    margin-top: 0px;
+                    margin-left: 0px;
+                    min-width: calc(600px + 230px + 230px + 24px);
+                    height: calc(1024px - 50px);
+                    max-height: 974px;
+                    overflow-y: hidden;
+                    
+                    .contentLeft {
+                        // border: 1px solid yellow;
+                        position: absolute;
+                        display: flex;
+                        left: 0px;
+                        width: calc(100% - 230px);      //-- -230px: inspectorPane
+                        min-width: calc(600px + 230px + 24px);
+                        height: 100%;
+                        
+                        .relationshipPane {
+                            // border: 1px solid red;
+                            width: 230px;
+                
+                            .background {
+                                width: 230px;
+                                height: calc(100% - 2px);
+                                background-color: $surface-2;
+                            }
+
+                            .header {
+                                // border: 1px solid red;
+                                position: absolute;
+                                top: 0px;
+                                width: 230px;
+                                height: 38px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+
+                                #title {
+                                    font-size: 11px;
+                                    line-height: 13px;
+                                    color: $white-64;
+                                    margin-left: 20px;
+                                }
+
+                                #showAll {
+                                    font-size: 11px;
+                                    line-height: 13px;
+                                    color: $white-64;
+                                    margin-right: 20px;
+                                    text-decoration: underline;
+                                    cursor: pointer;
+
+                                    &:hover {
+                                        color: white;
+                                    }
+                                }
+                            }
+
+                            .componentHolder {
+                                // border: 1px solid magenta;
+                                position: absolute;
+                                width: 230px;
+                                top: 38px;
+                                height: calc(100% - 2px - 38px);
+                                overflow-y: auto;
+                                overflow-x: hidden;
+                                // background-color: rgba(pink, .15);
+                                display: flex;
+                                flex-direction: column;
+                            }
+                        }
+
+                        .mainPane {
+                            // border: 1px solid orange;
+                            width: calc(100% - 24px);   //-- margin-left & margin-right: 12px x 2
+                            min-width: 600px;
+                            height: calc(100% - 2px);
+                            margin-left: 12px;
+                            margin-right: 12px;
+
+                            .bodyHeader {
+                                // border: 1px solid green;
+                                margin-top: 12px;
+                                width: 100%;
+                                height: 30px;
+                                display: flex;
+                                align-items: center;
+
+                                .title {
+                                    font-size: 18px;
+                                    line-height: 21px;
+                                    color: $white-94;
+                                }
+                                
+                            }
+
+                            .bodyContent {
+                                // border: 1px solid green;
+                                margin-top: 12px;
+                                height: calc(1024px - 12px - 30px - 12px - 50px);
+
+                                .desc {
+                                    position: absolute;
+                                    top: 75px;
+                                    left: 265px;
+                                    color: $white-64;
+                                }
+
+                                //-- Services, header (51) selected > 
+                                .serviceAll {
+                                    background-image: url('#{$asset_base}relationshipGraph/service-mixed51.jpg');
+                                    background-repeat: no-repeat; 
+                                }
+
+                                //-- Services, healthy (5) selected > 
+                                .serviceHealthy {
+                                    background-image: url('#{$asset_base}relationshipGraph/service-healthy5.jpg');
+                                    background-repeat: no-repeat; 
+                                }
+
+                                //-- Services, unknown (46) selected > 
+                                .serviceUnknown {
+                                    background-image: url('#{$asset_base}relationshipGraph/service-unknown46.jpg');
+                                    background-repeat: no-repeat; 
+                                }
+                                //--------------------------------------//
+
+                                //-- Namespaces, header (146) selected > 
+                                .mixedZero {
+                                    background-image: url('#{$asset_base}relationshipGraph/data-grid-mixed146.jpg');
+                                    background-repeat: no-repeat; 
+                                }
+
+                                //-- Namespaces, critical (1) selected > 
+                                .criticalOne {
+                                    background-image: url('#{$asset_base}relationshipGraph/data-grid-critical1.jpg');
+                                    background-repeat: no-repeat; 
+                                }
+
+                                //-- Namespaces, healthy (25) selected > 
+                                .healthyTwo {
+                                    background-image: url('#{$asset_base}relationshipGraph/data-grid-healthy25.jpg');
+                                    background-repeat: no-repeat; 
+                                }
+
+                                //-- Namespaces, unknown (120) selected > 
+                                .unknownThree {
+                                    background-image: url('#{$asset_base}relationshipGraph/data-grid-unknown120.jpg');
+                                    background-repeat: no-repeat; 
+                                }
+
+                                //-- single entity selected
+                                .loadOne {
+                                    background-image: url('#{$asset_base}relationshipGraph/chart-load1.jpg');
+                                    background-repeat: no-repeat; 
+                                }
+                            }
+                        }
+                    }
+                
+                    .inspectorPaneFixed {
+                        position: absolute;
+                        height: calc(100% - 2px);
+                        right: 0px;
+                        min-width: 230px;
+                        background-color: $surface-2;
+                        background-image: url('#{$asset_base}/bkg/services/inspector.svg');
+                        background-repeat: no-repeat; 
+                    }
+                }
+
+                .footer {
+                    position: absolute;
+                    left: 60px;
+                    bottom: 12px;
+                    width: 483px;
+                    height: 27px;
+                    // border: 1px solid green;
+                    background-image: url('#{$asset_base}bkg/observe/bubbleKinds.svg');
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+
+        div.panelContainer.subPage {
+            min-width: calc(50px + 460px + 24px + 600px);   //50px:navPane, 230px*2 (panes) + 12px*2 (margins) + 600px (body)
+            // border: 1px solid rgba(green, .75);
+        }
+    }
+
+    .examplePanel.subPage {
+        // border: 1px solid red;
+        min-width: calc(50px + 460px + 24px + 600px - 48px);
+    }
+}
+//----- END ExamplePanel --------------------------------//
+
+
+
+//-------------------------------------------------------//
+// Control Panel
+//-------------------------------------------------------//
+ .RelationshipGraph {
+    .controlPanel {    
+        // border: 1px solid white;
+        // width: 100%;
+        width: 1250px;
+        height: 50px;
+        margin-bottom: 5px;
+        margin-left: -8px;
+        // border: 1px solid white;    //test
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .column {
+            margin-right: 50px;
+            // border: 1px solid red;   //test
+        }
+    }
+
+    .controlPanel.observe, .controlPanel.subpage {
+        // border: 1px solid red;
+        margin-bottom: -25px;
+    }
+
+    .specPanel {
+        @include particle-font-fixed-width();
+        // border: 1px solid white;    //test
+        margin-left: 5px;
+        margin-bottom: 25px;
+        margin-top: 25px;
+
+        p {
+            font-size: 14px;
+            color: $white-64;
+        }
+    }
+}
+//-------------------- END Control Panel ----------------//
+
+
+
+//-------------------------------------------------------//
+// Circle component related
+//-------------------------------------------------------//
+.RelationshipGraph {
+    .circleHolder { 
+        //-- circular background and outline around an entity circle
+        padding: 4px;
+        border-radius: 50%;
+        background-color: transparent;
+
+        cursor: pointer;    //-- active
+
+        &:hover {
+            outline: 3px solid $primary-75;
+            // outline: 3px solid $primary-46;
+            
+            .circle {
+                filter: brightness(115%);
+            }
+        }
+    }
+
+    .circleHolder.selected {
+        outline: 3px solid $primary-75;
+        cursor: default;
+
+        .circle {
+            filter: brightness(115%);
+        }
+    }
+}
+//-------------------------------------------------------//
+
+@import "relationshipGraph/rgMedia";

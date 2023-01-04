@@ -1,0 +1,254 @@
+//-- reset, ERROR in the _config.scss (~@appd/ui-assets/)
+$font_base: "~@appd/ui-assets/fonts/";
+$image_base: "~@appd/ui-assets/";
+$icon_base: "~@appd/ui-assets/inline-images/";
+$asset_base: "../assets/";
+
+//-- iconography.scss is missing in the particle_mixins
+// @import "~@appd/ui-assets/particle/scss/iconography.scss";
+@import "~@appd/ui-assets/particle/scss/particle_mixins";
+@import "~@appd/ui-assets/particle/scss/particle_style";
+/* REF: by levitate-ui ---------------------------------
+$image_base: "~@appd/ui-assets/";
+$font_base: "~@appd/ui-assets/fonts/";
+@import "~@appd/ui-assets/fonts/particle-icon/particle-icon.css";
+@import "~@appd/ui-assets/particle/scss/particle_style";
+@import "~@appd/ui-assets/particle/scss/particle_mixins";
+@import "~@appd/ui-assets/particle/scss/theme-util";  //-- no need, already included in particle_mixins
+$particle-fallback-font-family
+--------------------------------------------------------- */
+
+
+
+//----------------------------------------------//
+// Particle Product Colors 
+//----------------------------------------------//
+$particle-deep-space-grey: #19212b;  //Brand Colors >> Primary >> deep-space, == $particle-deep-space-1
+$particle-deep-space-4: #C5C7CA;
+$particle-deep-space-3: #8C9095;
+$particle-deep-space-1: $particle-deep-space-grey;
+$particle-atmosphere-4: #F8F9FA;
+//
+$surface-2: #262939;                            //== surface-4 ???
+$surface-3: #323443;                            //navPane background, component & pane backgrounds
+$surface-5: #16192a;                            //skeletonLoading (dark prototype page background)
+$deepspace-dark-grey: $particle-deep-space-grey;  //== #19212B == $particle-deep-space-grey == $particle-deep-space-1
+$deepspace-light-grey: $particle-deep-space-4;    //== #C5C7CA == $particle-deep-space-4
+$atmosphere-white: $particle-atmosphere-4;        //== $particle-atmosphere-4 == $secondary-98
+
+$primary-high: #8a5fff;
+$primary-82: #BCA3FF;
+$primary-75: #A280ff;
+$primary-69: #8B61FF;
+$primary-46: #5D40AC;
+//
+$secondary-high: #cbadff;
+$secondary-98: #F8F9FA;                         //== $particle-atmosphere-4 == $secondary-98
+$secondary-76: #bcbec8;
+$secondary-23: #2D303E;
+
+//-- $atmosphere-white == $particle-atmosphere-4 == $secondary-high == $highlight-high == #F8F9FA
+$highlight-high: $particle-atmosphere-4;          //== $particle-atmosphere-4 == $secondary-98
+
+
+//-- grid related colors
+$pink-60: #D45E85;
+$pink-70: #F891B3;
+$pink-60-35: rgba($pink-60, .35);
+$pink-60-50: rgba($pink-60, .50);
+$pink-70-35: rgba($pink-70, .35);
+$pink-70-50: rgba($pink-70, .50);
+
+// $particle-dynamic-ultra: #4E3EB1;   //Brand Colors >> Primary >> deep-purple
+// $particle-sky-blue: #01bced;        //Brand Colors >> Primary >> sky-blue
+//
+// $particle-periwinkle: #9D8EFF;
+// $particle-dark-violet: #5845DB;
+// $particle-iris: #241774;
+//
+// $particle-ice-blue: #f6fbff;
+// $particle-rain-blue: #bedfff;
+// $particle-deep-sky-blue: #41a4f0;
+// $particle-lilac-violet: #ece9ff;
+// $particle-periwinkle: #9d8eff;
+// $particle-electric-indigo: #7b66ff;
+// $particle-dark-violet: #5845db;
+//
+// $particle-white: #ffffff;
+// $particle-stardust-grey: #f8f9fa;
+// $particle-cloud-grey: #f1f3f5;
+// $particle-winter-grey: #dee1e2;
+// $particle-siberian-grey: #dbdfe2;
+// $particle-matter-grey: #a2a6ab;
+// $particle-anthracite-grey: #585e67;
+//
+// $particle-signal-green: #00d270;
+// $particle-signal-green-light: #e6fff3;
+// $particle-azure-light: #0076ff;
+// $particle-azure-blue-light: #e6f1ff;
+// $particle-torch-red: #f0213a;
+// $particle-torch-red-light: #fee9eb;
+// $particle-saffron-yellow: #ffd00e;
+// $particle-saffron-yellow-light: #fffae6;
+// $particle-lava-orange: #ff7f32;
+// $particle-ultra-violet: #840fa6;
+// $particle-dynamic-ultra: #4E3E1B;
+
+
+
+//----------------------------------------------//
+// Particle Node Colors 
+//----------------------------------------------//
+$critical-80: #FB9D9F;
+$critical-74: #FA7A7E;
+$critical-66: #F9585C;
+$critical-66-30: rgba($critical-66, .30); 
+$critical-66-20: rgba($critical-66, .20);
+$critical-64: #ed5a5f;
+$critical-30: #94050A;
+//
+$normal-50: #40bf73;
+//
+$primary-46: #5D40AC;
+$primary-69: #8B61FF;
+$primary-75: #A280ff;
+$primary-82: #BCA3FF;
+$secondary-98: #F8F9FA;
+$secondary-23: #2D303E;
+
+
+
+//----------------------------------------------//
+// Black and White colors
+//----------------------------------------------//
+$white-0: rgba(white, 0);
+$white-06: rgba(white, .06);//*
+$white-10: rgba(white, .10);
+$white-15: rgba(white, .15);
+$white-25: rgba(white, .25);
+$white-34: rgba(white, .34);
+$white-38: rgba(white, .38);
+$white-50: rgba(white, .50);
+$white-64: rgba(white, .64);
+$white-70: rgba(white, .70);
+$white-75: rgba(white, .75);//*
+$white-84: rgba(white, .84);
+$white-94: rgba(white, .94);
+$white-100: white;
+/*
+$neutral-white-0: hsla(0,0%,100%,0);
+$neutral-white-6: hsla(0,0%,100%,.06);
+$neutral-white-10: hsla(0,0%,100%,.1);
+$neutral-white-15: hsla(0,0%,100%,.15);
+$neutral-white-25: hsla(0,0%,100%,.25);
+$neutral-white-34: hsla(0,0%,100%,.34);
+$neutral-white-38: hsla(0,0%,100%,.38);
+$neutral-white-50: hsla(0,0%,100%,.5);
+$neutral-white-64: hsla(0,0%,100%,.64);
+$neutral-white-70: hsla(0,0%,100%,.7);
+$neutral-white-84: hsla(0,0%,100%,.84);
+$neutral-white-94: hsla(0,0%,100%,.94);
+$neutral-white-100: hsla(0,0%,100%,1);
+*/
+
+$black-06: rgba(black, .06);    //*
+$black-10: rgba(black, .10);
+$black-30: rgba(black, .30);
+$black-50: rgba(black, .50);
+$black-64: rgba(black, .64);    //*
+$black-70: rgba(black, .70);
+$black-84: rgba(black, .84);    //*
+$black-94: rgba(black, .94);
+/*
+$neutral-black-0: hsla(0,0%,0%,0);
+$neutral-black-5: hsla(0,0%,0%,.05);
+$neutral-black-10: hsla(0,0%,0%,.1);
+$neutral-black-20: hsla(0,0%,0%,.2);
+$neutral-black-30: hsla(0,0%,0%,.3);
+$neutral-black-40: hsla(0,0%,0%,.4);
+$neutral-black-50: hsla(0,0%,0%,.5);
+$neutral-black-60: hsla(0,0%,0%,.6);
+$neutral-black-70: hsla(0,0%,0%,.7);
+$neutral-black-80: hsla(0,0%,0%,.8);
+$neutral-black-90: hsla(0,0%,0%,.9);
+$neutral-black-94: hsla(0,0%,0%,.94);
+$neutral-black-100: hsla(0,0%,0%,1);
+*/
+
+
+
+//----------------------------------------------//
+// Particle Spacing
+//----------------------------------------------//
+$particle-spacing-1x: 4px;
+$particle-spacing-2x: 8px;
+$particle-spacing-3x: 12px;
+$particle-spacing-4x: 16px;
+$particle-spacing-5x: 20px;
+$particle-spacing-6x: 24px;
+
+
+
+//----------------------------------------------//
+// Responsive Grid related
+//----------------------------------------------//
+//-- number of columns
+$particle-rg-columns-xs: 4;
+$particle-rg-columns-sm: 8;
+$particle-rg-columns-md: 12;
+$particle-rg-columns-lg: 12;
+$particle-rg-columns-xl: 12;
+$particle-rg-columns-xxl: 20;
+$particle-rg-columns-default: 12;
+//
+$particle-rg-columns-10: 10;    //-- 10 grid based
+
+$particle-rg-columns-sm-inspector-sm : 2;
+$particle-rg-columns-sm-inspector-lg : 4;
+$particle-rg-columns-md-inspector-sm : 3;
+$particle-rg-columns-md-inspector-lg : 6;
+
+
+//-- gutter and margins
+$particle-rg-gutter: $particle-spacing-2x;      //-- 8px (Particle 5.0)
+$particle-rg-margin: $particle-spacing-3x;      //-- 12px (Particle 5.0)
+$particle-rg-margin-xxl: $particle-spacing-6x;  //-- 24px, for 1920+(Particle 5.0)
+
+
+//-- BREAKPOINTS
+$particle-media-xs-min: 0px;      //0-599, 12px margin & 4 columns
+$particle-media-xs-max: 599px;  
+//  
+$particle-media-sm-min: 600px;    //600-904, 12px margin & 8 columns
+$particle-media-sm-max: 904px;    
+//
+$particle-media-md-min: 905px;    //905-1239, 12px margin & 12 columns 
+$particle-media-md-max: 1239px;    
+//
+$particle-media-lg-min: 1240px;   //1240-1439, 12px margin & 12 columns
+$particle-media-lg-max: 1439px;    
+//
+$particle-media-xl-min: 1440px;   //1440-1919, 12px margin & 12 columns
+$particle-media-xl-max: 1919px;   
+// 
+$particle-media-xxl-min: 1920px;  //1920+, 24px margin & 20 columns
+
+
+//-- minimum body pane width
+$particle-body-width-min: 600px;
+
+
+
+//----------------------------------------------//
+// Motion related
+//----------------------------------------------//
+$particle-easing-standard: cubic-bezier(0.4,0,0.2,1);
+$particle-easing-linear: cubic-bezier(0,0,1,1);
+$particle-easing-decelerate: cubic-bezier(0,0,0.2,1);
+$particle-easing-accelerate: cubic-bezier(0.4,0,1,1);
+
+$particle-duration-fast: 100ms;
+$particle-duration-medium: 200ms;
+$particle-duration-standard: 300ms;
+$particle-duration-lazy: 400ms;
+$particle-duration-slow: 600ms;

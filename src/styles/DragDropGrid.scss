@@ -1,0 +1,111 @@
+$image_base: "~@appd/ui-assets/";
+$font_base: "~@appd/ui-assets/fonts/";
+@import "~@appd/ui-assets/particle/particle_mixins";
+@import "~@appd/ui-assets/particle/scss/particle_style";
+@import "~@appd/ui-assets/particle/scss/_theme-dark.scss";
+
+.ag-root-wrapper {
+  border-radius: 6px;
+}
+
+#myGrid {
+  overflow: hidden;
+}
+
+/* Drag handler */
+.ag-drag-handle, .ag-row-drag {
+  padding: 0 10px;
+  margin-right: 0 !important;
+}
+
+.ag-cell { 
+  padding: 12px 0px!important; 
+} 
+
+/* Header spacing and border lines workaround */
+.ag-header-row .ag-header-cell:first-child{
+  margin-left: 30px!important;
+  border-left: 1px solid $particle-dark-divider-line!important;
+}
+.ag-header-row .ag-header-cell:nth-child(2){
+  border-left: 1px solid $particle-dark-divider-line!important;
+}
+
+.ag-cell-value, .ag-header-cell {
+  padding: 0 13px!important;
+}
+
+/* Remove default border from header */
+.ag-layout-normal{
+  border-width: 0 !important;
+  background-color:  $particle-dark-card-background-color!important;
+}
+
+.rowStyling, .ag-header-row {
+  box-shadow: inset 0 -1px 0px 0px rgba(255, 255, 255, 0.15)!important;
+  color: $particle-dark-body-color!important;
+  background-color:  $particle-dark-card-background-color!important;
+}
+
+.ag-row {
+  border-width: 0 !important;
+}
+
+/* ghost drag window */
+.ag-dnd-ghost{
+  background-color: $particle-dark-card-background-color!important; 
+  color: $particle-dark-body-color!important;
+  border: none !important;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3) !important;
+  border-radius: 3px !important; 
+  height: 40px !important;
+}
+
+/* Icon from ghost window */
+.ag-icon {
+  color:var(--white)!important;
+}
+
+/* background, cell bg, header bg */
+.ag-center-cols-viewport, .ag-cell, .ag-header-cell  {
+  border-width: 0 !important;
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
+  box-shadow: inset 0 -1px 0px 0px $particle-dark-divider-line!important; /*changed to bottom boxshadow only, boxshadow will not take on rowclass*/
+}
+
+.ag-header-cell {
+  border-right: 1px solid $particle-dark-divider-line!important;
+  background-color: $particle-dark-card-background-color;
+}
+
+.ag-row-selected {
+  background-color: $particle-dark-grid-row-selected-background-color!important;
+}
+
+/* HOVER */
+.ag-row-hover {
+  background-color: $particle-dark-grid-row-hover-background-color!important;
+}
+
+.ag-header-cell:hover {
+  background-color: $particle-dark-grid-row-hover-background-color!important;
+}
+
+.ag-header-cell-moving {
+  background-color: $particle-dark-grid-row-hover-background-color!important;
+}
+
+/* Keyboard */
+.ag-header-active:focus {
+  background-color: $particle-dark-grid-row-selected-background-color!important;
+}
+
+.ag-row-focus{
+  background-color: $particle-dark-grid-row-selected-background-color!important;
+} 
+
+/* Keyboard nav instruction div */
+#guide {
+  margin-top: 50px;
+}
