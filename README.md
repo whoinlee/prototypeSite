@@ -54,27 +54,23 @@ To deploy
 ## Available Prototypes
 
 ```
-http://prototypes.appdynamics.com
+https://timely-gnome-0e9610.netlify.app/
 ```
 
 <br/>
 
 ### Skeleton Loading Screen
 
-http://prototypes.appdynamics.com/skeletonScreen
 <br/><br/>
 
 ### Inspector Panel Resizing
 
-http://prototypes.appdynamics.com/inspectorPanel
 <br/><br/>
 
 ### Relationship Graph Improvements
 
-http://prototypes.appdynamics.com/relationshipGraph
 <br/><br/>
 
 ### Display Density
 
-http://prototypes.appdynamics.com/displayDensity
 <br/><br/>
