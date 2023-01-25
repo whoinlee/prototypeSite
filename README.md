@@ -4,15 +4,21 @@
 
 https://timely-gnome-0e9610.netlify.app/
 
-<br/>
+```
+Skeleton Loading Screen
+```
 
-### Skeleton Loading Screen
+```
+Inspector Panel Resizing
+```
 
-### Inspector Panel Resizing
+```
+Relationship Graph Improvements
+```
 
-### Relationship Graph Improvements
-
-### Display Density
+```
+Display Density
+```
 
 <br/><br/>
 
@@ -53,29 +59,5 @@ To deploy
 ```
   ./bin/deploy.sh
 ```
-
-<br/><br/>
-
-## Available Prototypes
-
-```
-https://timely-gnome-0e9610.netlify.app/
-```
-
-<br/>
-
-### Skeleton Loading Screen
-
-<br/><br/>
-
-### Inspector Panel Resizing
-
-<br/><br/>
-
-### Relationship Graph Improvements
-
-<br/><br/>
-
-### Display Density
 
 <br/><br/>
