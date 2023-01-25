@@ -7,15 +7,6 @@
         "dataURL": "",
         "projects": [
             {
-                "title": "Drag and Drop Grid",
-                "path": "/dragndrop",
-                "componentName": "DragDropIFrame",
-                "isIFrame": true,
-                "isActive": true,
-                "isDark": true,
-                "dataURL": "./dragndrop/index.html"
-            },
-            {
                 "title": "Skeleton Loading Screen",
                 "path": "/skeletonScreen",
                 "componentName": "SkeletonScreen",
@@ -107,11 +98,6 @@
         {
             "title" : "Available",
             "menu": [
-                {
-                    "title": "Drag and Drop Grid",
-                    "path": "/dragndrop",
-                    "subMenu": []
-                },
                 {
                     "title": "Skeleton Loading Screen",
                     "path": "/skeletonScreen",
