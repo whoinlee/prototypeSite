@@ -1,13 +1,18 @@
 # Particle Prototypes
 
-This project was bootstrapped with [<ins>Create React App</ins>](https://github.com/facebook/create-react-app).
+## Available Prototypes
+
+https://timely-gnome-0e9610.netlify.app/
+
 <br/>
 
-Please replace the [PAT] in .npmrc with your Personal Access Token before you install dependencies. ([<ins>Creating a personal access token</ins>](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) and [<ins>read more</ins>](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry))
+### Skeleton Loading Screen
 
-```
-  //npm.pkg.github.com/:_authToken=[PAT]
-```
+### Inspector Panel Resizing
+
+### Relationship Graph Improvements
+
+### Display Density
 
 <br/><br/>
 
