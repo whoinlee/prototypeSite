@@ -2,22 +2,30 @@
 
 ## Available Prototypes
 
-https://timely-gnome-0e9610.netlify.app/
+https://particle-prototypes.netlify.app/
 
-```
-Skeleton Loading Screen
-```
+<br/>
 
-```
-Inspector Panel Resizing
-```
+### Skeleton Loading Screen
 
-```
-Relationship Graph Improvements
-```
+https://particle-prototypes.netlify.app/skeletonScreen
+<br/><br/>
 
-```
-Display Density
+### Inspector Panel Resizing
+
+https://particle-prototypes.netlify.app/inspectorPanel
+<br/><br/>
+
+### Relationship Graph Improvements
+
+https://particle-prototypes.netlify.app/relationshipGraph
+<br/><br/>
+
+### Display Density
+
+https://particle-prototypes.netlify.app/displayDensity
+<br/><br/>
+
 ```
 
 <br/><br/>
@@ -27,37 +35,50 @@ Display Density
 To install dependencies
 
 ```
-  npm install
+
+npm install
+
 ```
 
 To discover new releases of the dependencies
 
 ```
-  npm outdated
+
+npm outdated
+
 ```
 
 To update all the dependencies to their latest ([<ins>read more</ins>](https://nodejs.dev/learn/update-all-the-nodejs-dependencies-to-their-latest-version))
 
 ```
-  npm update
+
+npm update
+
 ```
 
 To run the app in the dev mode
 
 ```
-  npm start
+
+npm start
+
 ```
 
 To build the app for production to the build folder
 
 ```
-  npm run build
+
+npm run build
+
 ```
 
 To deploy
 
 ```
-  ./bin/deploy.sh
+
+./bin/deploy.sh
+
 ```
 
 <br/><br/>
+```
