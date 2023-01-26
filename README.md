@@ -21,7 +21,8 @@ https://particle-prototypes.netlify.app/inspectorPanel
 #### 3. Relationship Graph Improvements
 
 https://particle-prototypes.netlify.app/relationshipGraph
-<br/><br/>
+<br/>![Alt text](/screenShots/relGraphComponents.jpg?raw=true 'Relationship Graph Improv')
+<br/>
 
 ## Available Scripts
 
