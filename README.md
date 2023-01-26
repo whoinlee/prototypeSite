@@ -15,6 +15,8 @@ https://particle-prototypes.netlify.app/skeletonScreen
 
 https://particle-prototypes.netlify.app/inspectorPanel
 <br/>
+![Alt text](/screenShots/inspectorPanelFixed.jpg?raw=true 'Fixed Width Inspector Panel')
+<br/>
 
 #### 3. Relationship Graph Improvements
 
