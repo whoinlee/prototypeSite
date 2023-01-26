@@ -8,6 +8,8 @@ https://particle-prototypes.netlify.app/
 
 https://particle-prototypes.netlify.app/skeletonScreen
 <br/>
+![Alt text](/screenShots/componentSkeletonCombined3.jpg?raw=true 'Components')
+<br/>
 
 #### 2. Inspector Panel Resizing
 
