@@ -39,7 +39,7 @@ const InspectorPanel = (props) => {
    } = useContext(ThemeNavContext);
 
   useEffect(() => {
-    setHideNav(false);
+    setHideNav(true);
     if (isNavOpen) setIsNavOpen(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

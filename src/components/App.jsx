@@ -22,7 +22,7 @@ const Components = {
 };
 
 const App = () => {
-  const [isNavOpen, setIsNavOpen] = useState(true);
+  const [isNavOpen, setIsNavOpen] = useState(false);
   const [isNavStay, setIsNavStay] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
   const [isBarButtonActive, setIsBarButtonActive] = useState(false);

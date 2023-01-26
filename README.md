@@ -9,6 +9,7 @@ https://particle-prototypes.netlify.app/
 ### Skeleton Loading Screen
 
 https://particle-prototypes.netlify.app/skeletonScreen
+
 <br/><br/>
 
 ### Inspector Panel Resizing
@@ -19,15 +20,6 @@ https://particle-prototypes.netlify.app/inspectorPanel
 ### Relationship Graph Improvements
 
 https://particle-prototypes.netlify.app/relationshipGraph
-<br/><br/>
-
-### Display Density
-
-https://particle-prototypes.netlify.app/displayDensity
-<br/><br/>
-
-```
-
 <br/><br/>
 
 ## Available Scripts
@@ -81,4 +73,7 @@ To deploy
 ```
 
 <br/><br/>
+
+```
+
 ```

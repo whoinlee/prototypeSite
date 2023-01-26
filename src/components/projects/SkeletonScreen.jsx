@@ -22,7 +22,7 @@ const SkeletonScreen = (props) => {
          } = useContext(ThemeNavContext);
 
   useEffect(() => {
-    setHideNav(false);
+    setHideNav(true);
     if (isNavOpen) setIsNavOpen(true);
     setIsNavStay(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
