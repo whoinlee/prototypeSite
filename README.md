@@ -7,12 +7,12 @@ https://particle-prototypes.netlify.app/
 #### 1. Skeleton Loading Screen
 
 https://particle-prototypes.netlify.app/skeletonScreen
-<br/><br/>
+<br/>
 
 #### 2. Inspector Panel Resizing
 
 https://particle-prototypes.netlify.app/inspectorPanel
-<br/><br/>
+<br/>
 
 #### 3. Relationship Graph Improvements
 
