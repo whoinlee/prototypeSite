@@ -4,19 +4,17 @@
 
 https://particle-prototypes.netlify.app/
 
-<br/>
-
-#### Skeleton Loading Screen
+#### 1. Skeleton Loading Screen
 
 https://particle-prototypes.netlify.app/skeletonScreen
 <br/><br/>
 
-#### Inspector Panel Resizing
+#### 2. Inspector Panel Resizing
 
 https://particle-prototypes.netlify.app/inspectorPanel
 <br/><br/>
 
-#### Relationship Graph Improvements
+#### 3. Relationship Graph Improvements
 
 https://particle-prototypes.netlify.app/relationshipGraph
 <br/><br/>
